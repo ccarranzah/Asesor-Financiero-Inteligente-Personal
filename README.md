@@ -43,7 +43,7 @@ Brindar asesoramiento financiero inteligente basado en la **situación económic
    ```
 
 ## 🛠️ Desarrollo y Colaboración
-Si deseas contribuir, revisa el archivo **CONTRIBUTING.md** para pautas de desarrollo. Cualquier sugerencia o mejora es bienvenida 🚀.
+Si deseas contribuir, revisa el archivo **[CONTRIBUTING](CONTRIBUTING.md)** para pautas de desarrollo. Cualquier sugerencia o mejora es bienvenida 🚀.
 
 ## 📄 Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
