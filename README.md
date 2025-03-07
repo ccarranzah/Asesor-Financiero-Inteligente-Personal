@@ -12,13 +12,11 @@ Brindar asesoramiento financiero inteligente basado en la **situación económic
 - **Base de Reglas**: Define estrategias para gestión de ingresos, gastos, deudas e inversiones.
 - **Base de Hechos**: Almacena datos financieros del usuario, incluyendo historial de transacciones.
 - **Motor de Inferencia**: Aplica reglas y lógica financiera para generar recomendaciones.
-- **Interfaz Web**: Permite a los usuarios interactuar con el sistema y recibir asesoría personalizada.
 
 ## 🛠️ Tecnologías Utilizadas
 - **Backend**: `.NET Core 9` con **C#**
 - **Base de Datos**: `SQLite`
 - **Lógica de Inferencia**: `NRules (First Order Logic - FOL)`
-- **Frontend (futuro desarrollo)**: `API`
 
 ## 🚀 Funcionalidades Clave
 ✅ Análisis automático de ingresos y gastos  
@@ -27,7 +25,7 @@ Brindar asesoramiento financiero inteligente basado en la **situación económic
 ✅ Optimización del pago de deudas  
 ✅ Visualización de datos financieros  
 
-## 📌 Casos de Uso 
+## 📌 Casos de Uso
 
 ## 📂 Instalación y Ejecución
 1. **Clona el repositorio**  
@@ -49,5 +47,3 @@ Si deseas contribuir, revisa el archivo **CONTRIBUTING.md** para pautas de desar
 
 ## 📄 Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
-
