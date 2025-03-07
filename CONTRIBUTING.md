@@ -1,5 +1,3 @@
-# 📜 Guía de Contribución
-
 ¡Gracias por tu interés en contribuir al **Asesor Financiero Inteligente Personal**! Para mantener un desarrollo organizado y eficiente, por favor sigue estas pautas:
 
 ### 🛠️ Cómo Contribuir
@@ -25,6 +23,19 @@
 - Sigue las convenciones de `.NET` y `C#`.
 - Usa nombres de variables y funciones descriptivos.
 - Escribe comentarios cuando sea necesario.
+
+### 🔀 Políticas de Ramas y Pull Requests
+- **`main`**: Solo código estable y probado. No se permite commit directo.
+- **`develop`**: Integración de nuevas funcionalidades antes de pasar a producción.
+- **`feature/*`**: Para nuevas funcionalidades, debe ser creada desde `develop` y fusionada a `develop` mediante un Pull Request.
+- **`bugfix/*`**: Para corregir errores en `develop`.
+- **`hotfix/*`**: Corrección urgente en `main`, fusionándose tanto en `main` como en `develop`.
+- **Antes de crear un Pull Request (PR)**:
+  - Asegúrate de que la rama está actualizada con `develop`.
+  - Incluye pruebas unitarias si aplica.
+  - Sigue las convenciones de código.
+  - Explica claramente los cambios en la descripción del PR.
+  - Un PR debe ser aprobado por al menos un revisor antes de fusionarse.
 
 ### 🔍 Reporte de Errores
 Si encuentras un error, por favor crea un **issue** en GitHub con la siguiente información:
