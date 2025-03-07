@@ -43,7 +43,7 @@ To provide intelligent financial advice based on the user's **personal economic 
    ```
 
 ## 🛠️ Development & Contribution
-If you want to contribute, check the **CONTRIBUTING.md** file for development guidelines. Suggestions and improvements are always welcome 🚀.
+If you want to contribute, check the **[CONTRIBUTING_EN](CONTRIBUTING_EN.md)** file for development guidelines. Suggestions and improvements are always welcome 🚀.
 
 ## 📄 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
