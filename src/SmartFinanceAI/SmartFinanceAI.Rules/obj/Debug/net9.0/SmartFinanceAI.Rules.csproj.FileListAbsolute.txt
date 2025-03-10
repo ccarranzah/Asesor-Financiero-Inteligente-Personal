@@ -1,0 +1,16 @@
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.csproj.AssemblyReference.cache
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.AssemblyInfoInputs.cache
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.AssemblyInfo.cs
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.csproj.CoreCompileInputs.cache
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.sourcelink.json
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\bin\Debug\net9.0\SmartFinanceAI.Rules.deps.json
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\bin\Debug\net9.0\SmartFinanceAI.Rules.dll
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\bin\Debug\net9.0\SmartFinanceAI.Rules.pdb
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\bin\Debug\net9.0\SmartFinanceAI.Domain.dll
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\bin\Debug\net9.0\SmartFinanceAI.Domain.pdb
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFin.22B3F4F5.Up2Date
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.dll
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\refint\SmartFinanceAI.Rules.dll
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\SmartFinanceAI.Rules.pdb
+C:\Users\ccarr\source\repos\ccarranzah\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.Rules\obj\Debug\net9.0\ref\SmartFinanceAI.Rules.dll
