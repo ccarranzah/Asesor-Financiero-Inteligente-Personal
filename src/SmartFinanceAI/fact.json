@@ -1,0 +1,74 @@
+{
+  "AccountHolder": {
+    "ID": "123456",
+    "Name": "Juan Pérez",
+    "Email": "juan.perez@example.com",
+    "Phone": "+50612345678",
+    "Age": 35,
+    "Address": "Avenida Central, San José, Costa Rica",
+    "Occupation": "Ingeniero de Software",
+    "Company": "Tech Solutions S.A.",
+    "RiskProfile": "Moderado",
+    "InitBalance": 10000.00
+  },
+  "CreditCardAccounts": [
+    {
+      "CardId": "CC001",
+      "ClientId": "123456",
+      "CardProvider": "Visa",
+      "CreditLimit": 5000.00,
+      "CurrentBalance": 1500.00,
+      "InterestRate": 0.18,
+      "MinimumPayment": 75.00
+    }
+  ],
+  "InvestmentAccounts": [
+    {
+      "InvestmentId": "INV001",
+      "ClientId": "123456",
+      "Type": "FondoMutuo",
+      "InitialInvestment": 10000.00,
+      "CurrentValue": 10500.00,
+      "AnnualYield": 0.052,
+      "StartDate": "2023-01-01",
+      "MaturityDate": "2028-01-01"
+    }
+  ],
+  "Loans": [
+    {
+      "LoanId": "LN001",
+      "ClientId": "123456",
+      "PrincipalAmount": 80000.00,
+      "InterestRate": 0.05,
+      "TermMonths": 240,
+      "MonthlyPayment": 527.84,
+      "OutstandingBalance": 75000.00,
+      "StartDate": "2020-01-01",
+      "DueDate": "2040-01-01"
+    }
+  ],
+  "Transactions": [
+    {
+      "TransactionId": "TXN001",
+      "Date": "2025-03-01",
+      "ClientId": "123456",
+      "Category": "Servicios Públicos",
+      "Subcategory": "Electricidad",
+      "Description": "Pago de factura de electricidad",
+      "Outflow": 150.00,
+      "Inflow": 0.00,
+      "Balance": 9850.00
+    },
+    {
+      "TransactionId": "TXN002",
+      "Date": "2025-03-05",
+      "ClientId": "123456",
+      "Category": "Ingresos",
+      "Subcategory": "Salario",
+      "Description": "Depósito de salario mensual",
+      "Outflow": 0.00,
+      "Inflow": 3000.00,
+      "Balance": 12850.00
+    }
+  ]
+}
