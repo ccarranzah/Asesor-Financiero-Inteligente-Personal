@@ -2,10 +2,12 @@
 using NRules;
 using NRules.Fluent;
 using SmartFinanceAI.Domain;
+using SmartFinanceAI.Domain.Entities;
+using SmartFinanceAI.Domain.Enums;
 using SmartFinanceAI.Rules;
 
 var repository = new RuleRepository();
-repository.Load(x => x.From(typeof(LowSavingsRule).Assembly));
+repository.Load(x => x.From(typeof(FiftyTwentyThirtyBudgetRule).Assembly));
 
 // 2. Compile the rules into a SessionFactory
 var factory = repository.Compile();
@@ -21,34 +23,36 @@ session.Events.RuleFiredEvent += (_, args) =>
 var user = new User
 {
     Name = "John Doe",
-    RiskProfile = RiskProfile.High,
+    RiskProfile = RiskProfile.Conservative,
 
     // Accounts
-    PaycheckAccount = new Account { Balance = 2500m },
-    SavingsAccount = new Account { Balance = 500m },
-    InvestmentAccount = new Account { Balance = 4000m },
+    Savings = [ 
+        new() { AccountNumber = "Paycheck", Balance = 500m } 
+    ],
+    Investments = [ 
+        new() { AccountNumber = "CDP", Balance = 4000m } 
+    ],
 
     // Financial instruments
-    CreditCards = new List<CreditCard>
-                {
-                    new CreditCard { Limit = 1000m, Balance = 850m, MonthlyInterestRate = 0.02m, CutDay = 10, DueDay = 25 },
-                    new CreditCard { Limit = 3000m, Balance = 1000m, MonthlyInterestRate = 0.015m, CutDay = 15, DueDay = 30 },
-                },
-    Loans = new List<Loan>
-                {
-                    new Loan { Balance = 5000m, MonthlyInterestRate = 0.01m, MonthsRemaining = 12, DueDay = 5 },
-                    new Loan { Balance = 12000m, MonthlyInterestRate = 0.02m, MonthsRemaining = 36, DueDay = 10 }
-                },
+    CreditCards = [
+                    new() { CardNumber = "1212", CreditLimit = 1000m, CurrentBalance = 850m },
+                    new() { CardNumber = "5252", CreditLimit = 3000m, CurrentBalance = 1000m },
+    ],
+    Loans = [
+        new() { LoanAlias = "Car", OutstandingBalance = 5000m, InterestRate = 0.01m, OutstandingMonths = 12, DueDay = 5 },
+        new() { LoanAlias = "House", OutstandingBalance = 12000m, InterestRate = 0.02m, OutstandingMonths = 36, DueDay = 10 }
+    ],
 
-    // New monthly budgeting details
-    MonthlyIncome = 4000m,
-    MonthlyNeeds = 2200m,   // > 50% => 55% of income
-    MonthlyWants = 1200m,  // 30% => OK
-    MonthlySavings = 600m  // 15% => below recommended 20%
+    Transactions = [
+        new() { Amount = 4000m, TransactionType = TransactionType.Income, TransactionCategoryType = TransactionCategoryType.Income, Date = DateTime.UtcNow },
+        new() { Amount = 2200m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Needs, Date = DateTime.UtcNow },
+        new() { Amount = 1200m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Wants, Date = DateTime.UtcNow },
+        new() { Amount = 600m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Savings, Date = DateTime.UtcNow },
+    ],    
 };
 
 // 6. Create a FinancialPlan with a base score of 100
-var plan = new FinancialPlan(user, baseScore: 100);
+var plan = new FinancialAdvisor(user, baseScore: 100);
 
 // 7. Insert the plan into the rules engine
 session.Insert(plan);

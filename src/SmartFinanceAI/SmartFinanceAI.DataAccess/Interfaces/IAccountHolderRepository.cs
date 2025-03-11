@@ -1,6 +1,4 @@
-﻿using SmartFinanceAI.Domain.Entities;
-
-namespace SmartFinanceAI.DataAccess.Interfaces
+﻿namespace SmartFinanceAI.DataAccess.Interfaces
 {
     public interface IAccountHolderRepository : IRepository<AccountHolder>
     {

@@ -1,60 +1,28 @@
 using NRules.Fluent.Dsl;
 
 using SmartFinanceAI.Domain;
+using SmartFinanceAI.Domain.Entities;
+using SmartFinanceAI.Domain.Enums;
 
 namespace SmartFinanceAI.Rules;
-
-public class LowSavingsRule : Rule
-{
-    public override void Define()
-    {
-        FinancialPlan plan = default!;
-
-        When()
-            .Match(() => plan,
-                p => p.User.SavingsAccount.Balance < 1000);
-
-        Then()
-            .Do(ctx => plan.AddAdvice(
-                $"Savings below recommended threshold. Current balance: {plan.User.SavingsAccount.Balance:C}"))
-            .Do(ctx => plan.Penalize(10));
-    }
-}
 
 public class HighCreditUtilizationRule : Rule
 {
     public override void Define()
     {
-        FinancialPlan plan = default!;
+        FinancialAdvisor plan = default!;
         CreditCard creditCard = default!;
 
         When()
             .Match(() => plan)
             .Match(() => creditCard,
                 c => plan.User.CreditCards.Contains(c),
-                c => c.Limit > 0,
-                c => (c.Balance / c.Limit) >= 0.70m);
+                c => c.CreditLimit > 0,
+                c => (c.CurrentBalance / c.CreditLimit) >= 0.70m);
 
         Then()
             .Do(ctx => plan.AddAdvice(
-                $"High credit utilization detected. Balance: {creditCard.Balance:C}, Limit: {creditCard.Limit:C}"))
-            .Do(ctx => plan.Penalize(5));
-    }
-}
-
-public class HighRiskProfileRule : Rule
-{
-    public override void Define()
-    {
-        FinancialPlan plan = default!;
-
-        When()
-            .Match(() => plan,
-                p => p.User.RiskProfile == RiskProfile.High);
-
-        Then()
-            .Do(ctx => plan.AddAdvice(
-                $"User is high risk. Advise caution with additional leverage or margin."))
+                $"{NotificationType.General} - High credit utilization detected. Balance: {creditCard.CurrentBalance:C}, Limit: {creditCard.CreditLimit:C}"))
             .Do(ctx => plan.Penalize(5));
     }
 }
@@ -63,7 +31,7 @@ public class MultipleLoansRule : Rule
 {
     public override void Define()
     {
-        FinancialPlan plan = default!;
+        FinancialAdvisor plan = default!;
         int loanCount = 0;
 
         When()
@@ -73,7 +41,7 @@ public class MultipleLoansRule : Rule
 
         Then()
             .Do(ctx => plan.AddAdvice(
-                $"User has {loanCount} loans. Suggest consolidation or targeted payoff strategy."))
+                $"{NotificationType.General} - User has {loanCount} loans. Suggest consolidation or targeted payoff strategy."))
             .Do(ctx => plan.Penalize(3));
     }
 }
@@ -82,16 +50,16 @@ public class HealthySavingsAndLowerRiskRule : Rule
 {
     public override void Define()
     {
-        FinancialPlan plan = default!;
+        FinancialAdvisor plan = default!;
 
         When()
             .Match(() => plan,
-                p => p.User.SavingsAccount.Balance >= 5000,
-                p => p.User.RiskProfile == RiskProfile.Low || p.User.RiskProfile == RiskProfile.Medium);
+                p => p.User.GetSavingsBalance() >= 5000,
+                p => p.User.RiskProfile == RiskProfile.Conservative || p.User.RiskProfile == RiskProfile.Moderate);
 
         Then()
             .Do(ctx => plan.AddAdvice(
-                "Good savings balance. Consider diversifying investments."))
+                $"{NotificationType.Investment} - Good savings balance. Consider diversifying investments."))
             .Do(ctx => plan.Reward(10));
     }
 }
@@ -101,22 +69,23 @@ public class FiftyTwentyThirtyBudgetRule : Rule
 {
     public override void Define()
     {
-        FinancialPlan plan = default!;
+        FinancialAdvisor plan = default!;
+        var now = DateTime.UtcNow;
 
         When()
             // Only apply if the user has a positive monthly income
-            .Match(() => plan, p => p.User.MonthlyIncome > 0);
+            .Match(() => plan, p => p.User.GetTotalInflowByPeriod(now.Year, now.Month) > 0);
 
         Then()
             .Do(ctx => CheckBudget(plan));
     }
 
-    private void CheckBudget(FinancialPlan plan)
+    private void CheckBudget(FinancialAdvisor plan)
     {
-        var income = plan.User.MonthlyIncome;
-        var needsRatio = plan.User.MonthlyNeeds / income;
-        var wantsRatio = plan.User.MonthlyWants / income;
-        var savingsRatio = plan.User.MonthlySavings / income;
+        var income = plan.User.GetTotalInflowByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
+        var needsRatio = plan.User.GetTotalOutflowNeedByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
+        var wantsRatio = plan.User.GetTotalOutflowWantsByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
+        var savingsRatio = plan.User.GetTotalOutflowSavingsByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
 
         // Check "Needs" (should be <= 50%)
         if (needsRatio > 0.50m)

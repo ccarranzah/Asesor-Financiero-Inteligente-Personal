@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SmartFinanceAI.DataAccess.Interfaces;
-using SmartFinanceAI.Domain.Entities;
 
 
 namespace SmartFinanceAI.DataAccess.JsonRepositories
