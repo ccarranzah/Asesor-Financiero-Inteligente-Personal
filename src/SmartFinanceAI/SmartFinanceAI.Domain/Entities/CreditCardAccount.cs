@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartFinanceAI.Domain
+namespace SmartFinanceAI.Domain.Entities
 {
     public class CreditCardAccount
     {
         public required string CardId { get; set; } // Unique identifier for the credit card
-        public required string CardProvider { get; set; } // Bank or provider (e.g., Visa, MasterCard)
+        public required string ClientId { get; set; } // Link to AccountHolder
+        public required string CardProvider { get; set; } // Bank or provider (Visa, MasterCard)
         public decimal CreditLimit { get; set; } // Maximum allowed credit
         public decimal CurrentBalance { get; set; } // Outstanding balance
         public decimal AvailableCredit => CreditLimit - CurrentBalance; // Available credit amount

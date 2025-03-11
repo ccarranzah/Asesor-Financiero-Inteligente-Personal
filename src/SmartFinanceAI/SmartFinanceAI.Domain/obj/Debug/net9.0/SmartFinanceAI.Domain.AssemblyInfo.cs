@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartFinanceAI.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+153614ce1c354831a1a27105b12bb09a2b83811b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d69f9b510c3abfdce3434627575f2a41766376ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartFinanceAI.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartFinanceAI.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

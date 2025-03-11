@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartFinanceAI.Domain
+namespace SmartFinanceAI.Domain.Entities
 {
     public class Loan
     {
         public required string LoanId { get; set; } // Unique identifier for the loan
+        public required string ClientId { get; set; } // Link to AccountHolder
         public decimal PrincipalAmount { get; set; } // The original amount borrowed
         public decimal InterestRate { get; set; } // Interest rate (annual percentage)
         public int TermMonths { get; set; } // Loan term in months

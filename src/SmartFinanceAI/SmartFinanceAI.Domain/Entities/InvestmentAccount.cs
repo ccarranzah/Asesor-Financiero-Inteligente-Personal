@@ -1,9 +1,12 @@
-﻿namespace SmartFinanceAI.Domain
+﻿using SmartFinanceAI.Domain.Enums;
+
+namespace SmartFinanceAI.Domain.Entities
 {
     public class InvestmentAccount
     {
         public required string InvestmentId { get; set; } // Unique identifier for the investment
-        public required string InvestmentType { get; set; } // Type of investment (CDP, Stocks, Bonds, Mutual Funds, etc.)
+        public required string ClientId { get; set; } // Link to AccountHolder
+        public required InvestmentType Type { get; set; } // Type of investment
         public decimal InitialInvestment { get; set; } // Amount initially invested
         public decimal CurrentValue { get; set; } // Current market value
         public decimal ReturnPercentage => (CurrentValue - InitialInvestment) / InitialInvestment * 100; // ROI percentage

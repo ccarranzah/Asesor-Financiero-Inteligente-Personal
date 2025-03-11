@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.dataaccess\\jsonrepositories\\jsonaccountholderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|solutionrelative:smartfinanceai.dataaccess\\jsonrepositories\\jsonaccountholderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\accountholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\accountholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\entities\\accountholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\entities\\accountholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\investmentaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\investmentaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.dataaccess\\efrepositories\\accountholderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|solutionrelative:smartfinanceai.dataaccess\\efrepositories\\accountholderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0C7E9EC-B3BF-4776-ADD1-2FB74F5E9C7B}|SmartFinanceAI.App\\SmartFinanceAI.App.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0C7E9EC-B3BF-4776-ADD1-2FB74F5E9C7B}|SmartFinanceAI.App\\SmartFinanceAI.App.csproj|solutionrelative:smartfinanceai.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.dataaccess\\interfaces\\iaccountholderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|solutionrelative:smartfinanceai.dataaccess\\interfaces\\iaccountholderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\loaan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\loaan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.dataaccess\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|solutionrelative:smartfinanceai.dataaccess\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\creditcardaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\creditcardaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.dataaccess\\dataloaders\\dataloaderfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|solutionrelative:smartfinanceai.dataaccess\\dataloaders\\dataloaderfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\notificationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\notificationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.dataaccess\\context\\smartfinancecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59EAA97D-732C-400F-8402-9D1B96EC9410}|SmartFinanceAI.DataAccess\\SmartFinanceAI.DataAccess.csproj|solutionrelative:smartfinanceai.dataaccess\\context\\smartfinancecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|c:\\users\\ccarr\\source\\repos\\ccarranzah\\asesor-financiero-inteligente-personal\\src\\smartfinanceai\\smartfinanceai.domain\\entities\\creditcardaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64EC490C-7E5B-484C-8C17-222F85296E64}|SmartFinanceAI.Domain\\SmartFinanceAI.Domain.csproj|solutionrelative:smartfinanceai.domain\\entities\\creditcardaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,103 +54,112 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InvestmentAccount.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\InvestmentAccount.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\InvestmentAccount.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\InvestmentAccount.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\InvestmentAccount.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AccountHolder.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Entities\\AccountHolder.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\Entities\\AccountHolder.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Entities\\AccountHolder.cs",
+              "RelativeToolTip": "SmartFinanceAI.Domain\\Entities\\AccountHolder.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAQwBQAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:55:33.041Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-10T23:18:18.375Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "CreditCardAccount.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\CreditCardAccount.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\CreditCardAccount.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\CreditCardAccount.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\CreditCardAccount.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAABKAAAAAAAAAA==",
+              "Title": "DataLoaderFactory.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\DataLoaders\\DataLoaderFactory.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.DataAccess\\DataLoaders\\DataLoaderFactory.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\DataLoaders\\DataLoaderFactory.cs",
+              "RelativeToolTip": "SmartFinanceAI.DataAccess\\DataLoaders\\DataLoaderFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:51:10.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Loaan.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Loaan.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\Loaan.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Loaan.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\Loaan.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:47:26.443Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.App\\Program.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.App\\Program.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.App\\Program.cs",
-              "RelativeToolTip": "SmartFinanceAI.App\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:41:21.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Transaction.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Transaction.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\Transaction.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Transaction.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\Transaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:37:29.816Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountHolder.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\AccountHolder.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\AccountHolder.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\AccountHolder.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\AccountHolder.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAYAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:23:00.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NotificationType.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\NotificationType.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\NotificationType.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\NotificationType.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\NotificationType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:17:34.62Z"
+              "WhenOpened": "2025-03-10T21:56:44.842Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Notification.cs",
-              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\Notification.cs",
-              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Notification.cs",
-              "RelativeToolTip": "SmartFinanceAI.Domain\\Notification.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Title": "JsonAccountHolderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\JsonRepositories\\JsonAccountHolderRepository.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.DataAccess\\JsonRepositories\\JsonAccountHolderRepository.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\JsonRepositories\\JsonAccountHolderRepository.cs",
+              "RelativeToolTip": "SmartFinanceAI.DataAccess\\JsonRepositories\\JsonAccountHolderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:11:44.787Z",
+              "WhenOpened": "2025-03-10T21:50:52.184Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountHolderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\EFRepositories\\AccountHolderRepository.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.DataAccess\\EFRepositories\\AccountHolderRepository.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\EFRepositories\\AccountHolderRepository.cs",
+              "RelativeToolTip": "SmartFinanceAI.DataAccess\\EFRepositories\\AccountHolderRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAawBIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T21:40:20.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Entities\\Transaction.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\Entities\\Transaction.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Entities\\Transaction.cs",
+              "RelativeToolTip": "SmartFinanceAI.Domain\\Entities\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T21:00:18.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAccountHolderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\Interfaces\\IAccountHolderRepository.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.DataAccess\\Interfaces\\IAccountHolderRepository.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\Interfaces\\IAccountHolderRepository.cs",
+              "RelativeToolTip": "SmartFinanceAI.DataAccess\\Interfaces\\IAccountHolderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T22:06:47.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.DataAccess\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "SmartFinanceAI.DataAccess\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T21:36:29.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SmartFinanceContext.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\Context\\SmartFinanceContext.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.DataAccess\\Context\\SmartFinanceContext.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.DataAccess\\Context\\SmartFinanceContext.cs",
+              "RelativeToolTip": "SmartFinanceAI.DataAccess\\Context\\SmartFinanceContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T21:32:41.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreditCardAccount.cs",
+              "DocumentMoniker": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Entities\\CreditCardAccount.cs",
+              "RelativeDocumentMoniker": "SmartFinanceAI.Domain\\Entities\\CreditCardAccount.cs",
+              "ToolTip": "C:\\Users\\ccarr\\source\\repos\\ccarranzah\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.Domain\\Entities\\CreditCardAccount.cs",
+              "RelativeToolTip": "SmartFinanceAI.Domain\\Entities\\CreditCardAccount.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAuwAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T20:03:29.269Z"
             }
           ]
         }
