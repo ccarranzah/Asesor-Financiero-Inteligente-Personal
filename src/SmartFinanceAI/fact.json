@@ -1,11 +1,11 @@
 {
   "AccountHolder": {
     "ID": "123456",
-    "Name": "Juan Pérez",
+    "Name": "Juan Pï¿½rez",
     "Email": "juan.perez@example.com",
     "Phone": "+50612345678",
     "Age": 35,
-    "Address": "Avenida Central, San José, Costa Rica",
+    "Address": "Avenida Central, San Josï¿½, Costa Rica",
     "Occupation": "Ingeniero de Software",
     "Company": "Tech Solutions S.A.",
     "RiskProfile": "Moderado",
@@ -52,7 +52,7 @@
       "TransactionId": "TXN001",
       "Date": "2025-03-01",
       "ClientId": "123456",
-      "Category": "Servicios Públicos",
+      "Category": "Servicios Pï¿½blicos",
       "Subcategory": "Electricidad",
       "Description": "Pago de factura de electricidad",
       "Outflow": 150.00,
@@ -65,7 +65,7 @@
       "ClientId": "123456",
       "Category": "Ingresos",
       "Subcategory": "Salario",
-      "Description": "Depósito de salario mensual",
+      "Description": "Depï¿½sito de salario mensual",
       "Outflow": 0.00,
       "Inflow": 3000.00,
       "Balance": 12850.00
