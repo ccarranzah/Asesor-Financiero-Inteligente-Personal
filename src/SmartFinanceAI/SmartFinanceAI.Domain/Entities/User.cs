@@ -15,7 +15,7 @@ public class User
 
     public IEnumerable<Transaction> GetTransactionsByPeriod(int year, int month)
     {
-    
+
         return Transactions.Where(t => t.Date.Year == year && t.Date.Month == month).OrderBy(t => t.Date);
     }
 

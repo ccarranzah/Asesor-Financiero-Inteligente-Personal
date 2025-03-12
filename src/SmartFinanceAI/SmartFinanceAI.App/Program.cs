@@ -27,11 +27,11 @@ var user = new User
     RiskProfile = RiskProfile.Conservative,
 
     // Accounts
-    Savings = [ 
-        new() { AccountNumber = "Paycheck", Balance = 500m } 
+    Savings = [
+        new() { AccountNumber = "Paycheck", Balance = 500m }
     ],
-    Investments = [ 
-        new() { AccountNumber = "CDP", Balance = 4000m } 
+    Investments = [
+        new() { AccountNumber = "CDP", Balance = 4000m }
     ],
 
     // Financial instruments
@@ -49,7 +49,7 @@ var user = new User
         new() { Amount = 2200m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Needs, Date = DateTime.UtcNow },
         new() { Amount = 1200m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Wants, Date = DateTime.UtcNow },
         new() { Amount = 600m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Savings, Date = DateTime.UtcNow },
-    ],    
+    ],
 };
 
 // 6. Create a FinancialPlan with a base score of 100

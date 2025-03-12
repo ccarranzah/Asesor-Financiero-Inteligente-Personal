@@ -1,28 +1,27 @@
 ﻿using System.ComponentModel;
 
-namespace SmartFinanceAI.Domain.Enums
+namespace SmartFinanceAI.Domain.Enums;
+
+public enum InvestmentType
 {
-    public enum InvestmentType
-    {
-        [Description("Certificate of Deposit at Term")]
-        CertificateDepositTerm,
+    [Description("Certificate of Deposit at Term")]
+    CertificateDepositTerm,
 
-        [Description("Stocks")]
-        Stocks,
+    [Description("Stocks")]
+    Stocks,
 
-        [Description("Bonds")]
-        Bonds,
+    [Description("Bonds")]
+    Bonds,
 
-        [Description("Mutual Funds")]
-        MutualFunds,
+    [Description("Mutual Funds")]
+    MutualFunds,
 
-        [Description("ETFs (Exchange-Traded Funds)")]
-        ETFs,
+    [Description("ETFs (Exchange-Traded Funds)")]
+    ETFs,
 
-        [Description("Real Estate")]
-        RealEstate,
+    [Description("Real Estate")]
+    RealEstate,
 
-        [Description("Cryptocurrencies")]
-        Cryptocurrencies
-    }
+    [Description("Cryptocurrencies")]
+    Cryptocurrencies
 }

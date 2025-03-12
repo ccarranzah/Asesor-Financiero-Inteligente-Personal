@@ -3,7 +3,6 @@ using NRules.Fluent.Dsl;
 using SmartFinanceAI.Domain;
 using SmartFinanceAI.Domain.Entities;
 using SmartFinanceAI.Domain.Enums;
-using SmartFinanceAI.Domain.Helpers;
 
 namespace SmartFinanceAI.Rules;
 

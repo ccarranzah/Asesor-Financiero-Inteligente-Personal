@@ -14,9 +14,4 @@
     <ProjectReference Include="..\SmartFinanceAI.Domain\SmartFinanceAI.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="RuleEngine\" />
-  </ItemGroup>
-
 </Project>
