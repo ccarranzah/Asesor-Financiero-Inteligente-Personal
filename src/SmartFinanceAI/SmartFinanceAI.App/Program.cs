@@ -8,6 +8,7 @@ using SmartFinanceAI.Rules;
 
 var repository = new RuleRepository();
 repository.Load(x => x.From(typeof(FiftyTwentyThirtyBudgetRule).Assembly));
+repository.Load(x => x.From(typeof(InvestmentRecommendationRule).Assembly));
 
 // 2. Compile the rules into a SessionFactory
 var factory = repository.Compile();
