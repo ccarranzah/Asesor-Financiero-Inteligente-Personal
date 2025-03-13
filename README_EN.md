@@ -56,7 +56,7 @@ To verify installation:
    ```
 3. Navigate to the project folder:
    ```bash
-   cd .\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.App
+   cd .\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.App
    ```
 
 ### ⚙️ Step 2: Install Required Dependencies
