@@ -26,22 +26,56 @@ Brindar asesoramiento financiero inteligente basado en la **situación económic
 ✅ Visualización de datos financieros  
 
 ## 📌 Casos de Uso
+Agregar aqui casos de uso
 
 ## 📂 Instalación y Ejecución
-1. **Clona el repositorio**  
+Si no tienes experiencia en programación, sigue estos pasos detallados para instalar y ejecutar el proyecto correctamente en tu computadora.
+
+### 🖥️ Requisitos previos
+Antes de empezar, asegúrate de tener instalado en tu computadora:
+1. [**Git**](https://git-scm.com/downloads): Necesario para descargar el código del repositorio.
+2. [**.NET SDK**](https://dotnet.microsoft.com/en-us/download): Necesario para ejecutar la aplicación.
+
+Para verificar si están instalados:
+- Abre la terminal o consola de comandos:
+  - **Windows**: Presiona `Win + R`, escribe `cmd` y presiona `Enter`.
+  - **Mac/Linux**: Abre la terminal (`Terminal` en Mac o `Ctrl + Alt + T` en Linux).
+- Escribe los siguientes comandos y presiona `Enter`:
+  ```bash
+  git --version
+  dotnet --version
+  ```
+  - Si ves un número de versión, significa que están instalados.
+  - Si da error, instala **Git** y **.NET SDK** desde los enlaces proporcionados arriba.
+
+### 📥 Paso 1: Descargar el proyecto
+1. Abre la terminal o línea de comandos.
+2. Escribe el siguiente comando para descargar el código del repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/asesor-financiero-inteligente.git
-   cd asesor-financiero-inteligente
+   git clone https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal.git
    ```
-2. **Instala dependencias**  
+3. Ingresa a la carpeta del proyecto:
    ```bash
-   dotnet restore
-   ```
-3. **Ejecuta el proyecto**  
-   ```bash
-   dotnet run
+   cd .\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.App
    ```
 
+### ⚙️ Paso 2: Instalar las dependencias necesarias
+Una vez dentro de la carpeta del proyecto, instala los paquetes necesarios ejecutando:
+```bash
+   dotnet restore
+```
+Esto descargará todas las herramientas que necesita el proyecto para funcionar correctamente.
+
+### ▶️ Paso 3: Ejecutar el proyecto
+Para iniciar el sistema, ejecuta:
+```bash
+   dotnet run
+```
+Después de unos segundos, el sistema estará funcionando y mostrará información en la consola.
+
+### 🔄 Paso 4: Interactuar con el sistema
+- Dependiendo de la configuración, puedes ver resultados directamente en la terminal o en una interfaz web si el proyecto la incluye.
+- Sigue las instrucciones en pantalla para probar sus funcionalidades.
 ## 🛠️ Desarrollo y Colaboración
 Si deseas contribuir, revisa el archivo **[CONTRIBUTING](CONTRIBUTING.md)** para pautas de desarrollo. Cualquier sugerencia o mejora es bienvenida 🚀.
 
