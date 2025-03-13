@@ -10,7 +10,6 @@ using SmartFinanceAI.Rules;
 
 var repository = new RuleRepository();
 repository.Load(x => x.From(typeof(FiftyTwentyThirtyBudgetRule).Assembly));
-//repository.Load(x => x.From(typeof(InvestmentRecommendationRule).Assembly));
 
 // 2. Compile the rules into a SessionFactory
 var factory = repository.Compile();
@@ -28,36 +27,6 @@ string jsonFilePath = Path.Combine(basePath, "data", "fact.json");
 IDataAccess<User> dataAccess = new JsonDataAccess<User, SmartFinanceAI.DataAccess.Models.User>(jsonFilePath);
 var users = dataAccess.GetAllAsync().Result ?? [];
 var user = users.FirstOrDefault();
-//var user = new User
-//{
-//    Name = "John Doe",
-//    RiskProfile = RiskProfile.Conservative,
-
-//    // Accounts
-//    Savings = [
-//        new() { AccountNumber = "Paycheck", Balance = 500m }
-//    ],
-//    Investments = [
-//        new() { AccountNumber = "CDP", Balance = 4000m }
-//    ],
-
-//    // Financial instruments
-//    CreditCards = [
-//                    new() { CardNumber = "1212", CreditLimit = 1000m, CurrentBalance = 850m },
-//                    new() { CardNumber = "5252", CreditLimit = 3000m, CurrentBalance = 1000m },
-//    ],
-//    Loans = [
-//        new() { LoanAlias = "Car", OutstandingBalance = 5000m, InterestRate = 0.01m, OutstandingMonths = 12, DueDay = 5 },
-//        new() { LoanAlias = "House", OutstandingBalance = 12000m, InterestRate = 0.02m, OutstandingMonths = 36, DueDay = 10 }
-//    ],
-
-//    Transactions = [
-//        new() { Amount = 4000m, TransactionType = TransactionType.Income, TransactionCategoryType = TransactionCategoryType.Income, Date = DateTime.UtcNow },
-//        new() { Amount = 2200m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Needs, Date = DateTime.UtcNow },
-//        new() { Amount = 1200m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Wants, Date = DateTime.UtcNow },
-//        new() { Amount = 600m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Savings, Date = DateTime.UtcNow },
-//    ],
-//};
 
 var userAggresiveAndHighBalance = new User
 {
