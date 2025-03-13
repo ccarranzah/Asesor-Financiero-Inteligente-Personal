@@ -5,6 +5,7 @@ using SmartFinanceAI.DataAccess;
 using SmartFinanceAI.DataAccess.Interfaces;
 using SmartFinanceAI.Domain;
 using SmartFinanceAI.Domain.Entities;
+using SmartFinanceAI.Domain.Enums;
 using SmartFinanceAI.Rules;
 
 var repository = new RuleRepository();
