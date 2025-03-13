@@ -9,11 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartFinanceAI.Domain", "Sm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartFinanceAI.App", "SmartFinanceAI.App\SmartFinanceAI.App.csproj", "{A0C7E9EC-B3BF-4776-ADD1-2FB74F5E9C7B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		fact.json = fact.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartFinanceAI.DataAccess", "SmartFinanceAI.DataAccess\SmartFinanceAI.DataAccess.csproj", "{59EAA97D-732C-400F-8402-9D1B96EC9410}"
 EndProject
 Global

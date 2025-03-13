@@ -3,7 +3,7 @@
     "Id": "598310c8-394d-4269-9732-067edb4493c5",
     "Name": "John Doe",
     "Age": 35,
-    "RiskProfile": 0,
+    "RiskProfile": 1,
     "CreditCards": [
       {
         "CardNumber": "1212",

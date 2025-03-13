@@ -7,11 +7,10 @@ namespace SmartFinanceAI.DataAccess.Context
     {
         public SmartFinanceContext(DbContextOptions<SmartFinanceContext> options) : base(options) { }
 
-        public DbSet<AccountHolder> AccountHolders { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Loan> Loans { get; set; }
-        public DbSet<CreditCardAccount> CreditCardAccounts { get; set; }
-        public DbSet<InvestmentAccount> InvestmentAccounts { get; set; }
+        public DbSet<CreditCard> CreditCardAccounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
