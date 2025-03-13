@@ -22,4 +22,13 @@ public class FinancialAdvisor
     public void Penalize(decimal penalty) => FinalScore -= penalty;
     public void Reward(decimal boost) => FinalScore += boost;
     public void AddAdvice(string advice) => AdviceList.Add(advice);
+
+    public decimal CalculateGeneralBalance()
+    {
+        var creditCardsBalance = User.CreditCards.Sum(c => c.CurrentBalance);
+        var hasLoans = User.Loans.Sum(l => l.PrincipalAmount);
+        var totalSavings = User.Savings.Sum(s => s.Balance);
+        var flowBalance = User.GetSuperaavitLastPeriod();
+        return totalSavings + flowBalance - creditCardsBalance - hasLoans;
+    }
 }

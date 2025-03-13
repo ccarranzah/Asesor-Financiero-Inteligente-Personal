@@ -58,8 +58,35 @@ var user = users.FirstOrDefault();
 //    ],
 //};
 
+var userAggresiveAndHighBalance = new User
+{
+    Name = "Ricky Rikon",
+    RiskProfile = RiskProfile.Aggressive,
+
+    // Accounts
+    Savings = [
+        new() { AccountNumber = "Plan de emergencia", Balance = 15000m },
+        new() { AccountNumber = "Ahorros de vacaciones", Balance = 5000m }
+    ],
+    Investments = [
+        new() { AccountNumber = "Stocks", Balance = 20000m }
+    ],
+
+    CreditCards = [
+        new() { CardNumber = "1234", CreditLimit = 5000m, CurrentBalance = 1000m },
+        new() { CardNumber = "5678", CreditLimit = 10000m, CurrentBalance = 2000m },
+    ],
+
+    Transactions = [
+        new() { Amount = 10000m, TransactionType = TransactionType.Income, TransactionCategoryType = TransactionCategoryType.Income, Date = DateTime.UtcNow },
+        new() { Amount = 3000m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Needs, Date = DateTime.UtcNow },
+        new() { Amount = 2000m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Wants, Date = DateTime.UtcNow },
+        new() { Amount = 1000m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Savings, Date = DateTime.UtcNow },
+    ],
+};
 // 6. Create a FinancialPlan with a base score of 100
-var plan = new FinancialAdvisor(user, baseScore: 100);
+var plan = new FinancialAdvisor(userAggresiveAndHighBalance, baseScore: 100);
+var plan2 = new FinancialAdvisor(userAggresiveAndHighBalance, baseScore: 100);
 
 // 7. Insert the plan into the rules engine
 session.Insert(plan);
