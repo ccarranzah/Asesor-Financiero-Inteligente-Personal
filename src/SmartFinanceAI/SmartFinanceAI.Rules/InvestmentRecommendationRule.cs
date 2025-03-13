@@ -29,13 +29,13 @@ public class InvestmentRecommendationRule : Rule
         {
             case RiskProfile.Conservative:
                 plan.AddAdvice($"{NotificationType.Investment} - {plan.User.Name}, we have analyzed your finances and found that you have a surplus of 20% of your income." +
-                    $"\r\nSince your risk profile is {riskProfile}, we recommend allocating part of this surplus, for example, ${investmentAmount:P1}, to a Fixed-Term {InvestmentType.CertificateDepositTerm.GetDescription()} with a 6-month term." +
+                    $"\r\nSince your risk profile is {riskProfile}, we recommend allocating part of this surplus, for example, ${investmentAmount:f}, to a Fixed-Term {InvestmentType.CertificateDepositTerm.GetDescription()} with a 6-month term." +
                     $"\r\nThis option guarantees stability with a fixed interest rate and no risks.");
                 plan.Penalize(5);
                 break;
             case RiskProfile.Moderate:
                 plan.AddAdvice($"{NotificationType.Investment} - {plan.User.Name}, your financial analysis shows a 20% surplus of your income." +
-                    $"\r\nSince your risk profile is {riskProfile}, we suggest investing {investmentAmount:P1} in a Moderate-Risk Investment Fund." +
+                    $"\r\nSince your risk profile is {riskProfile}, we suggest investing in a Moderate-Risk Investment Fund,for example ${investmentAmount:f}" +
                     $"\r\nThis type of fund combines \"{InvestmentType.Bonds.GetDescription()}\" and \"{InvestmentType.Stocks.GetDescription()}\" to balance security and returns, " +
                     $"offering better earnings than a {InvestmentType.CertificateDepositTerm.GetDescription()}");
                 plan.Penalize(5);
