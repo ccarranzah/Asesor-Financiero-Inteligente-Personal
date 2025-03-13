@@ -28,7 +28,7 @@ To provide intelligent financial advice based on the user's **personal economic 
 ## 📌 Use Cases
 Add here use cases
 
-## 📂 Installation & Execution (Beginner-Friendly Guide)
+## 📂 Installation & Execution
 If you have no programming experience, follow these detailed steps to install and run the project correctly on your computer.
 
 ### 🖥️ Prerequisites
