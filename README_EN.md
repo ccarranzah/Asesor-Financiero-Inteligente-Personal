@@ -26,21 +26,56 @@ To provide intelligent financial advice based on the user's **personal economic 
 ✅ Financial data visualization  
 
 ## 📌 Use Cases
+Add here use cases
 
-## 📂 Installation & Execution
-1. **Clone the repository**  
+## 📂 Installation & Execution (Beginner-Friendly Guide)
+If you have no programming experience, follow these detailed steps to install and run the project correctly on your computer.
+
+### 🖥️ Prerequisites
+Before starting, ensure that you have the following installed on your computer:
+1. [**Git**](https://git-scm.com/downloads): Required to download the repository.
+2. [**.NET SDK**](https://dotnet.microsoft.com/en-us/download): Required to run the application.
+
+To verify installation:
+- Open the terminal or command prompt:
+  - **Windows**: Press `Win + R`, type `cmd`, and press `Enter`.
+  - **Mac/Linux**: Open the terminal (`Terminal` on Mac or `Ctrl + Alt + T` on Linux).
+- Type the following commands and press `Enter`:
+  ```bash
+  git --version
+  dotnet --version
+  ```
+  - If you see a version number, they are installed correctly.
+  - If an error occurs, install **Git** and **.NET SDK** using the links above.
+
+### 📥 Step 1: Download the Project
+1. Open the terminal or command prompt.
+2. Type the following command to download the repository:
    ```bash
-   git clone https://github.com/your-username/financial-advisor.git
-   cd financial-advisor
+   git clone https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal.git
    ```
-2. **Install dependencies**  
+3. Navigate to the project folder:
    ```bash
+   cd .\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.App
+   ```
+
+### ⚙️ Step 2: Install Required Dependencies
+Once inside the project folder, install the necessary packages by running:
+```bash
    dotnet restore
-   ```
-3. **Run the project**  
-   ```bash
+```
+This will download all required tools for the project to function correctly.
+
+### ▶️ Step 3: Run the Project
+To start the system, execute:
+```bash
    dotnet run
-   ```
+```
+After a few seconds, the system will start running and display information in the console.
+
+### 🔄 Step 4: Interact with the System
+- Depending on the configuration, you may see results directly in the terminal or through a web interface if included.
+- Follow the on-screen instructions to test its functionalities.
 
 ## 🛠️ Development & Contribution
 If you want to contribute, check the **[CONTRIBUTING_EN](CONTRIBUTING_EN.md)** file for development guidelines. Suggestions and improvements are always welcome 🚀.
