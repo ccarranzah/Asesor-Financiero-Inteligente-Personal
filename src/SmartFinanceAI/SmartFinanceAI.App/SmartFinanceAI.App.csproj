@@ -12,8 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartFinanceAI.DataAccess\SmartFinanceAI.DataAccess.csproj" />
     <ProjectReference Include="..\SmartFinanceAI.Domain\SmartFinanceAI.Domain.csproj" />
     <ProjectReference Include="..\SmartFinanceAI.Rules\SmartFinanceAI.Rules.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\fact.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

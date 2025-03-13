@@ -1,0 +1,104 @@
+[
+  {
+    "Id": "598310c8-394d-4269-9732-067edb4493c5",
+    "Name": "John Doe",
+    "Age": 35,
+    "RiskProfile": 0,
+    "CreditCards": [
+      {
+        "CardNumber": "1212",
+        "CreditLimit": 2000.0,
+        "CurrentBalance": 500.0,
+        "AvailableCredit": 1500.0,
+        "InterestRate": 0.015,
+        "MinimumPayment": 25.0,
+        "NextDueDate": "2025-03-28"
+      },
+      {
+        "CardNumber": "5252",
+        "CreditLimit": 5000.0,
+        "CurrentBalance": 800.0,
+        "AvailableCredit": 4200.0,
+        "InterestRate": 0.02,
+        "MinimumPayment": 30.0,
+        "NextDueDate": "2025-04-03"
+      }
+    ],
+    "Loans": [
+      {
+        "LoanAlias": "Car",
+        "PrincipalAmount": 80000.00,
+        "InterestRate": 0.05,
+        "TermMonths": 240,
+        "MonthlyPayment": 527.84,
+        "OutstandingBalance": 73000.00,
+        "StartDate": "2020-01-01",
+        "DueDay": 5
+      },
+      {
+        "LoanAlias": "House",
+        "PrincipalAmount": 50000.0,
+        "InterestRate": 0.03,
+        "TermMonths": 240,
+        "OutstandingBalance": 45000.0,
+        "MonthlyPayment": 300.0,
+        "StartDate": "2019-01-01",
+        "DueDay": 10
+      }
+    ],
+    "Savings": [
+      {
+        "AccountNumber": "Paycheck",
+        "Balance": 3000.0
+      }
+    ],
+    "Investments": [
+      {
+        "AccountNumber": "CDP",
+        "Balance": 6000.0
+      },
+      {
+        "AccountNumber": "Stocks",
+        "Balance": 5000.0
+      }
+    ],
+    "Transactions": [
+      {
+        "Date": "2025-03-12T08:29:44.1271539+00:00",
+        "TransactionType": 0,
+        "TransactionCategoryType": 0,
+        "Description": "Income salary",
+        "Amount": 6000.0
+      },
+      {
+        "Date": "2025-03-12T08:29:44.1403812+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 1,
+        "Description": "Rent",
+        "Amount": 1200.0
+      },
+      {
+        "Date": "2025-03-12T08:29:44.1544288+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 2,
+        "Description": "Groceries",
+        "Amount": 600.0
+      },
+      {
+        "Date": "2025-03-12T08:29:44.1687367+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 3,
+        "Description": "Savings deposit",
+        "Amount": 1200.0
+      },
+      {
+        "Date": "2025-03-12T08:29:44.1801234+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 2,
+        "Description": "Entertainment",
+        "Amount": 400.0
+      }
+    ]
+  }
+]
+
