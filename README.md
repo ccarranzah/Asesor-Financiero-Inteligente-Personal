@@ -56,7 +56,7 @@ Para verificar si están instalados:
    ```
 3. Ingresa a la carpeta del proyecto:
    ```bash
-   cd .\\Asesor-Financiero-Inteligente-Personal\\src\\SmartFinanceAI\\SmartFinanceAI.App
+   cd .\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.App
    ```
 
 ### ⚙️ Paso 2: Instalar las dependencias necesarias
