@@ -1,4 +1,5 @@
-﻿using SmartFinanceAI.Domain;
+﻿using NRules.Fluent.Dsl;
+using SmartFinanceAI.Domain;
 using SmartFinanceAI.Domain.Enums;
 
 namespace SmartFinanceAI.Rules;
