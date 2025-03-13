@@ -1,0 +1,78 @@
+{
+  "en": {
+    "HighCreditUtilizationRule": {
+      "Advice": "High credit utilization detected. Balance: {0}, Limit: {1}",
+      "Penalty": 5
+    },
+    "MultipleLoansRule": {
+      "Advice": "User has {0} loans. Suggest consolidation or targeted payoff strategy.",
+      "Penalty": 3
+    },
+    "HealthySavingsAndLowerRiskRule": {
+      "Advice": "Good savings balance. Consider diversifying investments.",
+      "Reward": 10
+    },
+    "ExtraMoneyManagementRule": {
+      "LoanAdvice": "Extra money available: {0}. Consider paying off loans to reduce interest.",
+      "SavingsAdvice": "Extra money available: {0}. Consider saving more to build a financial cushion.",
+      "InvestmentAdvice": "Extra money available: {0}. Consider investing to grow your wealth.",
+      "LoanPenalty": 2,
+      "SavingsReward": 5,
+      "InvestmentReward": 10
+    },
+    "FiftyTwentyThirtyBudgetRule": {
+      "NeedsAdvice": "Needs exceed 50% of income. Current: {0}",
+      "SavingsAdvice": "Savings below 20% of income. Current: {0}",
+      "WantsAdvice": "Wants exceed 30% of income. Current: {0}",
+      "Penalty": 5
+    },
+    "ProgramOutput": {
+      "FinalOutput": "=== Final Output ===",
+      "User": "User: {0}",
+      "BaseScore": "Base Score: {0}",
+      "FinalScore": "Final Score: {0}",
+      "AdviceAndAlerts": "Advice & Alerts:"
+    }
+  },
+  "es": {
+    "HighCreditUtilizationRule": {
+      "Advice": "Se detectó una alta utilización de crédito. Saldo: {0}, Límite: {1}",
+      "Penalty": 5
+    },
+    "MultipleLoansRule": {
+      "Advice": "El usuario tiene {0} préstamos. Sugerir consolidación o estrategia de pago dirigida.",
+      "Penalty": 3
+    },
+    "HealthySavingsAndLowerRiskRule": {
+      "Advice": "Buen saldo de ahorros. Considere diversificar las inversiones.",
+      "Reward": 10
+    },
+    "ExtraMoneyManagementRule": {
+      "LoanAdvice": "Dinero extra disponible: {0}. Considere pagar préstamos para reducir intereses.",
+      "SavingsAdvice": "Dinero extra disponible: {0}. Considere ahorrar más para construir un colchón financiero.",
+      "InvestmentAdvice": "Dinero extra disponible: {0}. Considere invertir para hacer crecer su riqueza.",
+      "LoanPenalty": 2,
+      "SavingsReward": 5,
+      "InvestmentReward": 10
+    },
+    "FiftyTwentyThirtyBudgetRule": {
+      "NeedsAdvice": "Las necesidades superan el 50% de los ingresos. Actual: {0}",
+      "SavingsAdvice": "Ahorros por debajo del 20% de los ingresos. Actual: {0}",
+      "WantsAdvice": "Los deseos superan el 30% de los ingresos. Actual: {0}",
+      "Penalty": 5
+    },
+    "ProgramOutput": {
+      "FinalOutput": "=== Resultado Final ===",
+      "User": "Usuario: {0}",
+      "BaseScore": "Puntuación Base: {0}",
+      "FinalScore": "Puntuación Final: {0}",
+      "AdviceAndAlerts": "Consejos y Alertas:"
+    },
+    "InvestmentRule": {
+      "LowBalance": "De acuerdo a tu balance general, te recomendamos seguir ahorrando hasta alcanzar un mínimo de 3 meses de salario ahorrado o 3 meses de gastos previstos.",
+      "Conservative": "De acuerdo a tu balance general y perfil conservador, te recomendamos invertir en CDPs y cuentas de ahorro.",
+      "Moderate": "De acuerdo a tu balance general y perfil moderado, te recomendamos invertir en CDPs, cuentas de ahorro y fondos de inversión.",
+      "Aggressive": "De acuerdo a tu balance general y perfil agresivo, te recomendamos invertir en CDPs, cuentas de ahorro, fondos de inversión y acciones."
+    }
+  }
+}
