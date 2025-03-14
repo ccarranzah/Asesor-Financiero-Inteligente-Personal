@@ -1,9 +1,15 @@
 # 📊 Asesor Financiero Inteligente Personal
+## Estudiantes
+- Alberto Espinoza González
+- Denis Andres Solano Monge
+- Luis Gabriel Masis Fernandez
+- Carlos Alfredo Carranza Hidalgo
+
+## Repositorio:
+- [Asesor-Financiero-Inteligente-Personal](https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal)
 
 ## 📌 Descripción
 El **Asesor Financiero Inteligente Personal** es un sistema basado en conocimiento diseñado para ayudar a los usuarios a gestionar sus **ingresos, gastos, deudas e inversiones** de manera eficiente. Utiliza reglas financieras, aprendizaje basado en casos y algoritmos de optimización para proporcionar **recomendaciones personalizadas** y alertas en tiempo real.
-
-📄 [English Version](README_EN.md)
 
 ## 🎯 Objetivo
 Brindar asesoramiento financiero inteligente basado en la **situación económica personal** del usuario, ayudando a mejorar la planificación financiera y la toma de decisiones.
@@ -197,16 +203,6 @@ El actor consulta al sistema sobre las posibles acciones a realizar en caso de c
 
 #### Precondiciones
 - El usuario ha suministrado datos de ingresos, gastos y obligaciones durante el último mes.
-- El sistema puede calcular el superávit:
-
-  > Donde:  
-  > - \( I \): Ingresos mensuales  
-  > - \( G_f \): Gastos fijos (alquiler, servicios, seguros, etc.)  
-  > - \( G_v \): Gastos variables (alimentación, transporte, ocio, etc.)  
-  > - \( O_f \): Obligaciones financieras (préstamos, tarjetas de crédito, etc.)
-
-  Posteriormente en un proceso, se comparará ese superávit con el 20% de los ingresos.  
-
 - El perfil de riesgo del usuario está definido inicialmente como conservador, medio o agresivo.
 - El sistema cuenta con la regla 50/30/20 configurada (o, al menos, el umbral de 20% como referencia para la inversión).
 
@@ -219,12 +215,13 @@ El actor consulta al sistema sobre las posibles acciones a realizar en caso de c
    Se determina el porcentaje de superávit y se verifica si es ≥ 20% de los ingresos mensuales.  
 
    $$
-   S = \frac{(I - G_f - G_v - O_f)}{I} \times 100\% 
+   S = \frac{(I - G)}{I} \times 100\% 
    $$
 
    Donde:  
    - \( S \): Superávit mensual (resultado de ingresos menos gastos y obligaciones)  
    - \( I \): Ingresos mensuales
+   - \( G \): Gastos mensuales (Gastos fijos, variables y obligaciones financieras)
 
 3. **Verificación de Condición**:  
    - Si superávit ≥ 20%: proceder a la recomendación de inversión.  
@@ -399,3 +396,11 @@ Cada tres meses, el sistema analiza los ingresos, gastos y ahorros del usuario p
 
 > **Notificación del sistema**:  
 > "Carlos, en los últimos 3 meses no has logrado ahorrar y presentas más gastos que ingresos. Te sugerimos reducir gastos en entretenimiento y comida fuera de casa para mejorar tu estabilidad financiera. Tu calificación financiera es D. ¿Quieres que el sistema te ayude a ajustar tu presupuesto?"
+
+## Reglas
+
+Las reglas se han definido temporalmente para su prueba de funcionamiento en código: [SmartFinanceAI.Rules/](https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal/tree/main/src/SmartFinanceAI/SmartFinanceAI.Rules)
+
+## Base de hechos
+
+La base de hechos para las pruebas de inferencia se han definido para su prueba de funcionamiento en código: [SmartFinanceAI.App/](https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal/blob/main/src/SmartFinanceAI/SmartFinanceAI.App/Data/fact.json)
