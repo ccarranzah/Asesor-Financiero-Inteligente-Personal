@@ -99,6 +99,83 @@
         "Amount": 400.0
       }
     ]
+  },
+  {
+    "Id": "63fb5cd2-04b0-4793-8c79-b97c9e92f0f8",
+    "Name": "Ricky Rikon",
+    "Age": 0,
+    "RiskProfile": 2,
+    "CreditCards": [
+      {
+        "CardNumber": "1234",
+        "CreditLimit": 5000.0,
+        "CurrentBalance": 1000.0,
+        "AvailableCredit": 4000.0,
+        "InterestRate": 0.0,
+        "MinimumPayment": 0.0,
+        "NextDueDate": "0001-01-01T00:00:00",
+        "IsOverLimit": false,
+        "IsPaymentDue": true
+      },
+      {
+        "CardNumber": "5678",
+        "CreditLimit": 10000.0,
+        "CurrentBalance": 2000.0,
+        "AvailableCredit": 8000.0,
+        "InterestRate": 0.0,
+        "MinimumPayment": 0.0,
+        "NextDueDate": "0001-01-01T00:00:00",
+        "IsOverLimit": false,
+        "IsPaymentDue": true
+      }
+    ],
+    "Loans": [],
+    "Savings": [
+      {
+        "AccountNumber": "Plan de emergencia",
+        "Balance": 15000.0
+      },
+      {
+        "AccountNumber": "Ahorros de vacaciones",
+        "Balance": 5000.0
+      }
+    ],
+    "Investments": [
+      {
+        "AccountNumber": "Stocks",
+        "Balance": 20000.0
+      }
+    ],
+    "Transactions": [
+      {
+        "Date": "2025-03-20T03:07:07.6671591+00:00",
+        "TransactionType": 0,
+        "TransactionCategoryType": 0,
+        "Description": null,
+        "Amount": 10000.0
+      },
+      {
+        "Date": "2025-03-20T03:07:07.6672209+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 1,
+        "Description": null,
+        "Amount": 3000.0
+      },
+      {
+        "Date": "2025-03-20T03:07:07.6672216+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 2,
+        "Description": null,
+        "Amount": 2000.0
+      },
+      {
+        "Date": "2025-03-20T03:07:07.6672217+00:00",
+        "TransactionType": 1,
+        "TransactionCategoryType": 3,
+        "Description": null,
+        "Amount": 1000.0
+      }
+    ]
   }
 ]
 
