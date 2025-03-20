@@ -2,7 +2,6 @@
 using NRules;
 using NRules.Fluent;
 using SmartFinanceAI.DataAccess;
-using SmartFinanceAI.DataAccess.Interfaces;
 using SmartFinanceAI.Domain;
 using SmartFinanceAI.Domain.Entities;
 using SmartFinanceAI.Rules;
