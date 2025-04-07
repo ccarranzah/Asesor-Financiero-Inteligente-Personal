@@ -21,7 +21,9 @@ session.Events.RuleFiredEvent += (_, args) =>
 
 // 5. Construct an example user
 string basePath = AppDomain.CurrentDomain.BaseDirectory;
-string jsonFilePath = Path.Combine(basePath, "data", "fact.json");
+// Linux is case sensitive, so we need to use the correct case for the path
+string jsonFilePath = Path.Combine(basePath, "Data", "fact.json");
+
 var dataAccess = new JsonDataAccess<User, SmartFinanceAI.DataAccess.Models.User>(jsonFilePath);
 
 // Ask if the user wants to use a specific example user

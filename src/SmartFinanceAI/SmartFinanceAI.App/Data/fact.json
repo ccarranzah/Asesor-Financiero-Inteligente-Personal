@@ -12,7 +12,7 @@
         "AvailableCredit": 1500.0,
         "InterestRate": 0.015,
         "MinimumPayment": 25.0,
-        "NextDueDate": "2025-03-28"
+        "NextDueDate": "2025-04-28"
       },
       {
         "CardNumber": "5252",
@@ -64,35 +64,35 @@
     ],
     "Transactions": [
       {
-        "Date": "2025-03-12T08:29:44.1271539+00:00",
+        "Date": "2025-04-12T08:29:44.1271539+00:00",
         "TransactionType": 0,
         "TransactionCategoryType": 0,
         "Description": "Income salary",
         "Amount": 6000.0
       },
       {
-        "Date": "2025-03-12T08:29:44.1403812+00:00",
+        "Date": "2025-04-12T08:29:44.1403812+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 1,
         "Description": "Rent",
         "Amount": 1200.0
       },
       {
-        "Date": "2025-03-12T08:29:44.1544288+00:00",
+        "Date": "2025-04-12T08:29:44.1544288+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 2,
         "Description": "Groceries",
         "Amount": 600.0
       },
       {
-        "Date": "2025-03-12T08:29:44.1687367+00:00",
+        "Date": "2025-04-12T08:29:44.1687367+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 3,
         "Description": "Savings deposit",
         "Amount": 1200.0
       },
       {
-        "Date": "2025-03-12T08:29:44.1801234+00:00",
+        "Date": "2025-04-12T08:29:44.1801234+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 2,
         "Description": "Entertainment",
@@ -148,28 +148,28 @@
     ],
     "Transactions": [
       {
-        "Date": "2025-03-20T03:07:07.6671591+00:00",
+        "Date": "2025-04-20T03:07:07.6671591+00:00",
         "TransactionType": 0,
         "TransactionCategoryType": 0,
         "Description": null,
         "Amount": 10000.0
       },
       {
-        "Date": "2025-03-20T03:07:07.6672209+00:00",
+        "Date": "2025-04-20T03:07:07.6672209+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 1,
         "Description": null,
         "Amount": 3000.0
       },
       {
-        "Date": "2025-03-20T03:07:07.6672216+00:00",
+        "Date": "2025-04-20T03:07:07.6672216+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 2,
         "Description": null,
         "Amount": 2000.0
       },
       {
-        "Date": "2025-03-20T03:07:07.6672217+00:00",
+        "Date": "2025-04-20T03:07:07.6672217+00:00",
         "TransactionType": 1,
         "TransactionCategoryType": 3,
         "Description": null,
