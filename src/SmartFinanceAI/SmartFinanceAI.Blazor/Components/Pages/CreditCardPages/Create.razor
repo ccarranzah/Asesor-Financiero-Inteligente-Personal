@@ -1,0 +1,70 @@
+@page "/creditcards/create"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>CreditCard</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="CreditCard" OnValidSubmit="AddCreditCard" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>    
+            <div class="mb-3">
+                <label for="cardnumber" class="form-label">CardNumber:</label> 
+                <InputText id="cardnumber" @bind-Value="CreditCard.CardNumber" class="form-control" /> 
+                <ValidationMessage For="() => CreditCard.CardNumber" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="creditlimit" class="form-label">CreditLimit:</label> 
+                <InputNumber id="creditlimit" @bind-Value="CreditCard.CreditLimit" class="form-control" /> 
+                <ValidationMessage For="() => CreditCard.CreditLimit" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="currentbalance" class="form-label">CurrentBalance:</label> 
+                <InputNumber id="currentbalance" @bind-Value="CreditCard.CurrentBalance" class="form-control" /> 
+                <ValidationMessage For="() => CreditCard.CurrentBalance" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="interestrate" class="form-label">InterestRate:</label> 
+                <InputNumber id="interestrate" @bind-Value="CreditCard.InterestRate" class="form-control" /> 
+                <ValidationMessage For="() => CreditCard.InterestRate" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="minimumpayment" class="form-label">MinimumPayment:</label> 
+                <InputNumber id="minimumpayment" @bind-Value="CreditCard.MinimumPayment" class="form-control" /> 
+                <ValidationMessage For="() => CreditCard.MinimumPayment" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="nextduedate" class="form-label">NextDueDate:</label> 
+                <InputDate id="nextduedate" @bind-Value="CreditCard.NextDueDate" class="form-control" /> 
+                <ValidationMessage For="() => CreditCard.NextDueDate" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/creditcards">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private CreditCard CreditCard { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddCreditCard()
+    {
+        CreditCard.UserId = 1; // TODO: Replace with actual user ID from authentication context
+        using var context = DbFactory.CreateDbContext();
+        context.CreditCard.Add(CreditCard);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/creditcards");
+    }
+}

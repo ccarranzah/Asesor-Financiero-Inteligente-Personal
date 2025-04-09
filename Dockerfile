@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /App
 
 # Copy everything
-COPY ./src/SmartFinanceAI ./
+COPY ./src/SmartFinanceAI/SmartFinanceAI.Blazor/ ./
 # Restore as distinct layers
 RUN dotnet restore
 
@@ -13,4 +13,5 @@ RUN dotnet publish -o out
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /App
 COPY --from=build /App/out/ .
-ENTRYPOINT ["dotnet", "SmartFinanceAI.App.dll"]
+COPY --from=build /App/SmartFinanceAIAppContext.db .
+ENTRYPOINT ["dotnet", "SmartFinanceAI.Blazor.dll"]

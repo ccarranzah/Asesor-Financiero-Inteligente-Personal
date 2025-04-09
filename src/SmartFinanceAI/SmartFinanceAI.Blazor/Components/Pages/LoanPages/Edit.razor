@@ -1,0 +1,129 @@
+@page "/loans/edit"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>Loan</h2>
+<hr />
+@if (Loan is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="Loan" OnValidSubmit="UpdateLoan" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="Loan.Id" value="@Loan.Id" />
+                <div class="mb-3">
+                    <label for="loanalias" class="form-label">Loan Alias:</label>
+                    <InputText id="loanalias" @bind-Value="Loan.LoanAlias" class="form-control" />
+                    <ValidationMessage For="() => Loan.LoanAlias" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="principalamount" class="form-label">Principal Amount:</label>
+                    <InputNumber id="principalamount" @bind-Value="Loan.PrincipalAmount" class="form-control" />
+                    <ValidationMessage For="() => Loan.PrincipalAmount" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="interestrate" class="form-label">Interest Rate:</label>
+                    <InputNumber id="interestrate" @bind-Value="Loan.InterestRate" class="form-control" />
+                    <ValidationMessage For="() => Loan.InterestRate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="termmonths" class="form-label">Term Months:</label>
+                    <InputNumber id="termmonths" @bind-Value="Loan.TermMonths" class="form-control" />
+                    <ValidationMessage For="() => Loan.TermMonths" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="outstandingmonths" class="form-label">Outstanding Months:</label>
+                    <InputNumber id="outstandingmonths" @bind-Value="Loan.OutstandingMonths" class="form-control" />
+                    <ValidationMessage For="() => Loan.OutstandingMonths" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="monthlypayment" class="form-label">Monthly Payment:</label>
+                    <InputNumber id="monthlypayment" @bind-Value="Loan.MonthlyPayment" class="form-control" />
+                    <ValidationMessage For="() => Loan.MonthlyPayment" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="outstandingbalance" class="form-label">Outstanding Balance:</label>
+                    <InputNumber id="outstandingbalance" @bind-Value="Loan.OutstandingBalance" class="form-control" />
+                    <ValidationMessage For="() => Loan.OutstandingBalance" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="startdate" class="form-label">Start Date:</label>
+                    <InputDate id="startdate" @bind-Value="Loan.StartDate" class="form-control" />
+                    <ValidationMessage For="() => Loan.StartDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="dueday" class="form-label">Due Day:</label>
+                    <InputNumber id="dueday" @bind-Value="Loan.DueDay" class="form-control" />
+                    <ValidationMessage For="() => Loan.DueDay" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/loans">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    [SupplyParameterFromForm]
+    private Loan? Loan { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        Loan ??= await context.Loan.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (Loan is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateLoan()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(Loan!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!LoanExists(Loan!.Id))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/loans");
+    }
+
+    private bool LoanExists(int id)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.Loan.Any(e => e.Id == id);
+    }
+}
