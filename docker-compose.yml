@@ -1,7 +1,7 @@
 services:
-  kbs-project:
-    image: dandsm/kbs-project:latest
-    container_name: kbs-project
+  smart-finance-app:
+    image: dandsm/smart-finance-app:latest
+    container_name: smart-finance-app
     ports:
       - "8080:8080"
     volumes:
