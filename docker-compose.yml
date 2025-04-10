@@ -1,0 +1,10 @@
+services:
+  kbs-project:
+    image: dandsm/kbs-project:latest
+    container_name: kbs-project
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/SmartFinanceAI/SmartFinanceAI.Blazor/Data:/App/Data
+    stdin_open: true
+    tty: true
