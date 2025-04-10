@@ -1,5 +1,3 @@
-# 📜 Contribution Guide
-
 Thank you for your interest in contributing to the **Personal Intelligent Financial Advisor**! To ensure an organized and efficient development process, please follow these guidelines:
 
 ### 🛠️ How to Contribute
@@ -25,6 +23,19 @@ Thank you for your interest in contributing to the **Personal Intelligent Financ
 - Follow `.NET` and `C#` coding conventions.
 - Use descriptive variable and function names.
 - Add comments where necessary.
+
+### 🔀 Branch and Pull Request Policies
+- **`main`**: Only stable and tested code. Direct commits are not allowed.
+- **`develop`**: New features are integrated here before release.
+- **`feature/*`**: New functionalities must be developed from `develop` and merged back via a Pull Request.
+- **`bugfix/*`**: Used for fixing bugs in `develop`.
+- **`hotfix/*`**: Urgent fixes for `main`, merged into both `main` and `develop`.
+- **Before creating a Pull Request (PR)**:
+  - Ensure the branch is up-to-date with `develop`.
+  - Include unit tests if applicable.
+  - Follow coding standards.
+  - Clearly explain the changes in the PR description.
+  - A PR must be approved by at least one reviewer before merging.
 
 ### 🔍 Reporting Issues
 If you find a bug, please create an **issue** on GitHub with the following details:

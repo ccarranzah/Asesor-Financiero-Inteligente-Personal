@@ -1,0 +1,110 @@
+﻿@page "/advisor"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@using SmartFinanceAI.Blazor.Services
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject IInferenceService InferenceService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Advisor</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="text-center">Advisor</h1>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Final Scores</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Base Score</h5>
+                    <p class="card-text">@FinancialAdvisor?.BaseScore</p>
+                    <h5 class="card-title">Final Score</h5>
+                    <p class="card-text">@FinancialAdvisor?.FinalScore</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Global General Balance</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Calculated Balance</h5>
+                    <p class="card-text">@FinancialAdvisor?.CalculateGeneralBalance()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Advices</h2>
+            <ul class="list-group">
+                @if (FinancialAdvisor?.AdviceList != null && FinancialAdvisor.AdviceList.Any())
+                {
+                    @foreach (var advice in FinancialAdvisor.AdviceList)
+                    {
+                        <li class="list-group-item">@advice</li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item">No advices available.</li>
+                }
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Fired Rules</h2>
+            <ul class="list-group">
+                @if (FinancialAdvisor?.RulesApplied != null && FinancialAdvisor.RulesApplied.Any())
+                {
+                    @foreach (var rule in FinancialAdvisor.RulesApplied)
+                    {
+                        <li class="list-group-item">@rule</li>
+                    }
+                }
+                else
+                {
+                    <li class="list-group-item">No rules applied.</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [SupplyParameterFromForm]
+    private FinancialAdvisor? FinancialAdvisor { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        var user = await context.AppUser
+            .Include(u => u.CreditCards)
+            .Include(u => u.Loans)
+            .Include(u => u.Accounts)
+            .Include(u => u.Transactions)
+            .Include(u => u.Transactions)
+            .FirstOrDefaultAsync(m => m.Id == 1);
+
+        if (user is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+        else
+        {
+            FinancialAdvisor = new FinancialAdvisor(user);
+        }
+
+        var session = InferenceService.CreateSession();
+
+        //Setup an event handler that prints the name of the fired rule
+        session.Events.RuleFiredEvent += (_, args) 
+            => FinancialAdvisor!.RulesApplied.Add(args.Rule.Name);
+        
+        session.Insert(FinancialAdvisor!);
+
+        session.Fire();
+    }
+}

@@ -1,0 +1,134 @@
+@page "/transactions/create"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Transaction</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Transaction" OnValidSubmit="AddTransaction" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>     
+            <div class="mb-3">
+                <label for="accountid" class="form-label">Account:</label> 
+                <InputSelect id="accountid" @bind-Value="Transaction.AccountId" class="form-control">
+                    <option value="">-- Select an Account --</option>
+                    @foreach (var account in Accounts)
+                    {
+                        <option value="@account.Id">@account.AccountAlias</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Transaction.AccountId" class="text-danger" /> 
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date:</label> 
+                <InputDate id="date" @bind-Value="Transaction.Date" class="form-control" /> 
+                <ValidationMessage For="() => Transaction.Date" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="transactiontype" class="form-label">Transaction Type:</label> 
+                <InputSelect id="transactiontype" @bind-Value="Transaction.TransactionType" class="form-control">
+                    <option value="">-- Select a Transaction Type --</option>
+                    @foreach (var transactionType in Enum.GetValues<TransactionType>())
+                    {
+                        <option value="@transactionType">@transactionType</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Transaction.TransactionType" class="text-danger" /> 
+            </div>    
+            <div class="mb-3">
+                <label for="transactioncategorytype" class="form-label">Transaction Category Type:</label> 
+                <InputSelect id="transactioncategorytype" @bind-Value="Transaction.TransactionCategoryType" class="form-control">
+                    <option value="">-- Select a Category Type --</option>
+                    @foreach (var categoryType in Enum.GetValues<TransactionCategoryType>())
+                    {
+                        <option value="@categoryType">@categoryType</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Transaction.TransactionCategoryType" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label> 
+                <InputText id="description" @bind-Value="Transaction.Description" class="form-control" /> 
+                <ValidationMessage For="() => Transaction.Description" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount:</label> 
+                <InputNumber id="amount" @bind-Value="Transaction.Amount" class="form-control" /> 
+                <ValidationMessage For="() => Transaction.Amount" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/transactions">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Transaction Transaction { get; set; } = new();
+
+    private List<Account> Accounts { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        Accounts = await context.Account.ToListAsync();
+    }
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddTransaction()
+    {
+        Transaction.UserId = 1; // TODO: Replace with actual user ID from authentication context
+        using var context = DbFactory.CreateDbContext();
+        using var dbTransaction = await context.Database.BeginTransactionAsync();
+
+        try
+        {
+            // Add the transaction
+            context.Transaction.Add(Transaction);
+
+            // Update the account balance
+            var account = await context.Account.FindAsync(Transaction.AccountId);
+            if (account == null)
+            {
+            throw new InvalidOperationException("Account not found.");
+            }
+
+            if (Transaction.TransactionType == TransactionType.Income)
+            {
+            account.Balance += Transaction.Amount;
+            }
+            else if (Transaction.TransactionType == TransactionType.Expense)
+            {
+            account.Balance -= Transaction.Amount;
+            }
+
+            context.Account.Update(account);
+
+            // Save changes and commit transaction
+            await context.SaveChangesAsync();
+            
+            await dbTransaction.CommitAsync();
+        }
+        catch
+        {
+            await dbTransaction.RollbackAsync();
+            throw;
+        }
+        finally
+        {
+            await context.DisposeAsync();
+        }
+
+        NavigationManager.NavigateTo("/transactions");
+    }
+}
