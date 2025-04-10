@@ -14,7 +14,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddSingleton<IInferenceService, CodeRulesInferenceService>();
+builder.Services.AddSingleton<IInferenceService, CodeRulesDbInferenceService>();
 
 var app = builder.Build();
 

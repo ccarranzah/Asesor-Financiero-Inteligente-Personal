@@ -14,7 +14,7 @@ public class HighCreditUtilizationRule : Rule
         When()
             .Match(() => plan)
             .Match(() => creditCard,
-                c => plan.User.CreditCards!.Contains(c),
+                c => plan.AppUser.CreditCards!.Contains(c),
                 c => c.CreditLimit > 0,
                 c => (c.CurrentBalance / c.CreditLimit) >= 0.70m);
 

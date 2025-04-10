@@ -43,9 +43,29 @@ public static class SeedData
                 return;   // DB has been seeded
             }
 
-            context.AddRange(
-                userData
-            );
+            string rulesFilesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedRules");
+
+            if (!Directory.Exists(rulesFilesPath))
+            {
+                throw new DirectoryNotFoundException($"The directory {rulesFilesPath} does not exist.");
+            }
+
+            context.AddRange(userData);
+
+            var rules = new List<FinancialAdvisorRule>();
+            foreach (var file in Directory.GetFiles(rulesFilesPath, "*.txt"))
+            {
+                var code = File.ReadAllText(file);
+                var rule = new FinancialAdvisorRule
+                {
+                    Name = Path.GetFileNameWithoutExtension(file),
+                    Definition = code
+                };
+                rules.Add(rule);
+            }
+
+            context.FinancialAdvisorRule.AddRange(rules);
+
             context.SaveChanges();
         }
     }

@@ -13,7 +13,7 @@ public class FiftyTwentyThirtyBudgetRule : Rule
 
         When()
             // Only apply if the user has a positive monthly income
-            .Match(() => plan, p => p.User.GetTotalInflowByPeriod(now.Year, now.Month) > 0);
+            .Match(() => plan, p => p.AppUser.GetTotalInflowByPeriod(now.Year, now.Month) > 0);
 
         Then()
             .Do(ctx => CheckBudget(plan));
@@ -21,10 +21,10 @@ public class FiftyTwentyThirtyBudgetRule : Rule
 
     private void CheckBudget(FinancialAdvisor plan)
     {
-        var income = plan.User.GetTotalInflowByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
-        var needsRatio = plan.User.GetTotalOutflowNeedByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
-        var wantsRatio = plan.User.GetTotalOutflowWantsByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
-        var savingsRatio = plan.User.GetSuperaavitByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
+        var income = plan.AppUser.GetTotalInflowByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month);
+        var needsRatio = plan.AppUser.GetTotalOutflowNeedByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
+        var wantsRatio = plan.AppUser.GetTotalOutflowWantsByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
+        var savingsRatio = plan.AppUser.GetSuperaavitByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) / income;
 
         // Check "Needs" (should be <= 50%)
         if (needsRatio > 0.50m)

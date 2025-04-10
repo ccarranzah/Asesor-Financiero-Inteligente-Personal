@@ -12,8 +12,8 @@ public class HealthySavingsAndLowerRiskRule : Rule
 
         When()
             .Match(() => plan,
-                p => p.User.GetSavingsBalance() >= 5000,
-                p => p.User.RiskProfile == RiskProfile.Conservative || p.User.RiskProfile == RiskProfile.Moderate);
+                p => p.AppUser.GetSavingsBalance() >= 5000,
+                p => p.AppUser.RiskProfile == RiskProfile.Conservative || p.AppUser.RiskProfile == RiskProfile.Moderate);
 
         Then()
             .Do(ctx => plan.AddAdvice(

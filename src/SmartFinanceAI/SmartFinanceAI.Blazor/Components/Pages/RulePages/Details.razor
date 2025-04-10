@@ -1,0 +1,52 @@
+@page "/rules/details"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>FinancialAdvisorRule</h2>
+    <hr />
+    @if (financialadvisorrule is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@financialadvisorrule.Name</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Definition</dt>
+            <dd class="col-sm-10">
+            <pre><code>@financialadvisorrule.Definition</code></pre>
+            </dd>
+        </dl>
+        <div>
+            <a href="@($"/rules/edit?id={financialadvisorrule.Id}")">Edit</a> |
+            <a href="@($"/rules")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private FinancialAdvisorRule? financialadvisorrule;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        financialadvisorrule = await context.FinancialAdvisorRule.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (financialadvisorrule is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

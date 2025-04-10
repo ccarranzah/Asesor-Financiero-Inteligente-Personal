@@ -13,7 +13,7 @@ public class MultipleLoansRule : Rule
 
         When()
             .Match(() => plan)
-            .Let(() => loanCount, () => plan.User.Loans!.Count)
+            .Let(() => loanCount, () => plan.AppUser.Loans!.Count)
             .Having(() => loanCount > 1);
 
         Then()

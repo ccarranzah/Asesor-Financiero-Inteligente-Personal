@@ -11,7 +11,7 @@ using SmartFinanceAI.Blazor.Data;
 namespace SmartFinanceAI.Blazor.Migrations
 {
     [DbContext(typeof(SmartFinanceAIAppContext))]
-    [Migration("20250409023631_InitialCreate")]
+    [Migration("20250410152134_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -101,6 +101,23 @@ namespace SmartFinanceAI.Blazor.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CreditCard");
+                });
+
+            modelBuilder.Entity("SmartFinanceAI.Blazor.Models.FinancialAdvisorRule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Definition")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FinancialAdvisorRule");
                 });
 
             modelBuilder.Entity("SmartFinanceAI.Blazor.Models.Loan", b =>

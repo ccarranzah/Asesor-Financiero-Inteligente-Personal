@@ -27,6 +27,20 @@ namespace SmartFinanceAI.Blazor.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FinancialAdvisorRule",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Definition = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FinancialAdvisorRule", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Account",
                 columns: table => new
                 {
@@ -164,6 +178,9 @@ namespace SmartFinanceAI.Blazor.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CreditCard");
+
+            migrationBuilder.DropTable(
+                name: "FinancialAdvisorRule");
 
             migrationBuilder.DropTable(
                 name: "Loan");

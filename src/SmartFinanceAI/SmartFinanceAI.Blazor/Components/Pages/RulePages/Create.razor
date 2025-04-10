@@ -1,0 +1,52 @@
+@page "/rules/create"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@using SmartFinanceAI.Blazor.Services
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject IInferenceService InferenceService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>FinancialAdvisorRule</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="FinancialAdvisorRule" OnValidSubmit="AddFinancialAdvisorRule" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label> 
+                <InputText id="name" @bind-Value="FinancialAdvisorRule.Name" class="form-control" /> 
+                <ValidationMessage For="() => FinancialAdvisorRule.Name" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="definition" class="form-label">Definition:</label> 
+                <InputTextArea id="definition" @bind-Value="FinancialAdvisorRule.Definition" class="form-control" rows="10" />
+                <ValidationMessage For="() => FinancialAdvisorRule.Definition" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/rules">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private FinancialAdvisorRule FinancialAdvisorRule { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddFinancialAdvisorRule()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.FinancialAdvisorRule.Add(FinancialAdvisorRule);
+        await context.SaveChangesAsync();
+        await InferenceService.RefreshRulesAsync();
+        NavigationManager.NavigateTo("/rules");
+    }
+}
