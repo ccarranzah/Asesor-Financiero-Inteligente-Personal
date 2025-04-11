@@ -1,0 +1,10 @@
+services:
+  smart-finance-app:
+    image: dandsm/smart-finance-app:latest
+    container_name: smart-finance-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/SmartFinanceAI/SmartFinanceAI.Blazor/Data:/App/Data
+    stdin_open: true
+    tty: true

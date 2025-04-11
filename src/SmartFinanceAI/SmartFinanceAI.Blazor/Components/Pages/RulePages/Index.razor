@@ -1,0 +1,36 @@
+@page "/rules"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using SmartFinanceAI.Blazor.Models
+@using SmartFinanceAI.Blazor.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="rules/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.FinancialAdvisorRule">
+    <PropertyColumn Property="financialadvisorrule => financialadvisorrule.Name" />
+
+    <TemplateColumn Context="financialadvisorrule">
+        <a href="@($"rules/edit?id={financialadvisorrule.Id}")">Edit</a> |
+        <a href="@($"rules/details?id={financialadvisorrule.Id}")">Details</a> |
+        <a href="@($"rules/delete?id={financialadvisorrule.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private SmartFinanceAIAppContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

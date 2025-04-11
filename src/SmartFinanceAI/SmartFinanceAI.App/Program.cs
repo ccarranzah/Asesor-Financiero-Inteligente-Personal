@@ -2,10 +2,8 @@
 using NRules;
 using NRules.Fluent;
 using SmartFinanceAI.DataAccess;
-using SmartFinanceAI.DataAccess.Interfaces;
 using SmartFinanceAI.Domain;
 using SmartFinanceAI.Domain.Entities;
-using SmartFinanceAI.Domain.Enums;
 using SmartFinanceAI.Rules;
 
 var repository = new RuleRepository();
@@ -23,40 +21,43 @@ session.Events.RuleFiredEvent += (_, args) =>
 
 // 5. Construct an example user
 string basePath = AppDomain.CurrentDomain.BaseDirectory;
-string jsonFilePath = Path.Combine(basePath, "data", "fact.json");
-IDataAccess<User> dataAccess = new JsonDataAccess<User, SmartFinanceAI.DataAccess.Models.User>(jsonFilePath);
-var users = dataAccess.GetAllAsync().Result ?? [];
-var user = users.FirstOrDefault();
+// Linux is case sensitive, so we need to use the correct case for the path
+string jsonFilePath = Path.Combine(basePath, "Data", "fact.json");
 
-var userAggresiveAndHighBalance = new User
+var dataAccess = new JsonDataAccess<User, SmartFinanceAI.DataAccess.Models.User>(jsonFilePath);
+
+// Ask if the user wants to use a specific example user
+Console.Write("\r\nWould you like to use a specific sample user (if the first sample user is not used)? (y/n, default n): ");
+string useExampleUserInput = Console.ReadLine() ?? "n";
+
+User? user;
+if (useExampleUserInput?.Trim().ToLower() == "y")
 {
-    Name = "Ricky Rikon",
-    RiskProfile = RiskProfile.Aggressive,
+    // Use a specific example user
+    Console.Write("Enter the user ID: ");
+    string? userIdInput = Console.ReadLine();
+    user = await dataAccess.GetByIdAsync(userIdInput);
+    if (user == null)
+    {
+        Console.WriteLine($"User with ID '{userIdInput}' not found.");
+        return;
+    }
+}
+else
+{
+    // Use a default example user
+    var users = await dataAccess.GetAllAsync() ?? [];
+    user = users.FirstOrDefault();
+    if (user == null)
+    {
+        Console.WriteLine("No users found in the data source.");
+        return;
+    }
+    Console.WriteLine("Using the first example user from the data source.");
+}
 
-    // Accounts
-    Savings = [
-        new() { AccountNumber = "Plan de emergencia", Balance = 15000m },
-        new() { AccountNumber = "Ahorros de vacaciones", Balance = 5000m }
-    ],
-    Investments = [
-        new() { AccountNumber = "Stocks", Balance = 20000m }
-    ],
-
-    CreditCards = [
-        new() { CardNumber = "1234", CreditLimit = 5000m, CurrentBalance = 1000m },
-        new() { CardNumber = "5678", CreditLimit = 10000m, CurrentBalance = 2000m },
-    ],
-
-    Transactions = [
-        new() { Amount = 10000m, TransactionType = TransactionType.Income, TransactionCategoryType = TransactionCategoryType.Income, Date = DateTime.UtcNow },
-        new() { Amount = 3000m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Needs, Date = DateTime.UtcNow },
-        new() { Amount = 2000m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Wants, Date = DateTime.UtcNow },
-        new() { Amount = 1000m, TransactionType = TransactionType.Expense, TransactionCategoryType = TransactionCategoryType.Savings, Date = DateTime.UtcNow },
-    ],
-};
 // 6. Create a FinancialPlan with a base score of 100
-var plan = new FinancialAdvisor(userAggresiveAndHighBalance, baseScore: 100);
-var plan2 = new FinancialAdvisor(userAggresiveAndHighBalance, baseScore: 100);
+var plan = new FinancialAdvisor(user, baseScore: 100);
 
 // 7. Insert the plan into the rules engine
 session.Insert(plan);

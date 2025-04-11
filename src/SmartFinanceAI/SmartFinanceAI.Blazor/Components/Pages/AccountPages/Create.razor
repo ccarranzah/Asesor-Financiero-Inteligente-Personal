@@ -1,0 +1,65 @@
+@page "/accounts/create"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Account</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Account" OnValidSubmit="AddAccount" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>     
+            <div class="mb-3">
+                <label for="accounttype" class="form-label">Account Type:</label>
+                <InputSelect id="accounttype" @bind-Value="Account.AccountType" class="form-control">
+                    @foreach (var accountType in Enum.GetValues<AccountType>())
+                    {
+                        <option value="@accountType">@accountType</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Account.AccountType" class="text-danger" />
+            </div>    
+            <div class="mb-3">
+                <label for="accountalias" class="form-label">AccountcAlias:</label> 
+                <InputText id="accountalias" @bind-Value="Account.AccountAlias" class="form-control" /> 
+                <ValidationMessage For="() => Account.AccountAlias" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="accountnumber" class="form-label">Account Number:</label> 
+                <InputText id="accountnumber" @bind-Value="Account.AccountNumber" class="form-control" /> 
+                <ValidationMessage For="() => Account.AccountNumber" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="balance" class="form-label">Balance:</label> 
+                <InputNumber id="balance" @bind-Value="Account.Balance" class="form-control" /> 
+                <ValidationMessage For="() => Account.Balance" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/accounts">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Account Account { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddAccount()
+    {
+        Account.UserId = 1; // TODO: Replace with actual user ID from authentication context
+        using var context = DbFactory.CreateDbContext();
+        context.Account.Add(Account);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/accounts");
+    }
+}

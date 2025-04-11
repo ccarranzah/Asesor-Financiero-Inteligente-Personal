@@ -1,0 +1,114 @@
+@page "/transactions/delete"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>Transaction</h2>
+    <hr />
+    @if (Transaction is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">UserId</dt>
+            <dd class="col-sm-10">@Transaction.UserId</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">AccountId</dt>
+            <dd class="col-sm-10">@Transaction.AccountId</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Date</dt>
+            <dd class="col-sm-10">@Transaction.Date</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">TransactionType</dt>
+            <dd class="col-sm-10">@Transaction.TransactionType</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">TransactionCategoryType</dt>
+            <dd class="col-sm-10">@Transaction.TransactionCategoryType</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-10">@Transaction.Description</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Amount</dt>
+            <dd class="col-sm-10">@Transaction.Amount</dd>
+        </dl>
+        <EditForm method="post" Model="Transaction" OnValidSubmit="DeleteTransaction" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(Transaction is null)">Delete</button> |
+            <a href="/transactions">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private Transaction Transaction = new();
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        var transaction = await context.Transaction.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (transaction is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+        else
+        {
+            Transaction = transaction;
+        }
+    }
+
+    private async Task DeleteTransaction()
+    {
+        using var context = DbFactory.CreateDbContext();
+        using var dbTransaction = await context.Database.BeginTransactionAsync();
+
+        try
+        {
+            // Retrieve the account associated with the transaction
+            var account = await context.Account.FirstOrDefaultAsync(a => a.Id == Transaction!.AccountId);
+            if (account != null)
+            {
+                if (Transaction.TransactionType == TransactionType.Income)
+                {
+                account.Balance -= Transaction.Amount;
+                }
+                else if (Transaction.TransactionType == TransactionType.Expense)
+                {
+                    account.Balance += Transaction.Amount;
+                }
+            }            
+
+            // Remove the transaction
+            context.Transaction.Remove(Transaction!);
+            
+            await context.SaveChangesAsync();
+
+            // Commit the transaction
+            await dbTransaction.CommitAsync();
+        }
+        catch
+        {
+            // Rollback the transaction in case of an error
+            await dbTransaction.RollbackAsync();
+            throw;
+        }
+
+        NavigationManager.NavigateTo("/transactions");
+    }
+}

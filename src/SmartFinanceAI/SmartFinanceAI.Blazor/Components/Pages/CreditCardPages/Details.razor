@@ -1,0 +1,56 @@
+@page "/creditcards/details"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>CreditCard</h2>
+    <hr />
+    @if (creditcard is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">CardNumber</dt>
+            <dd class="col-sm-10">@creditcard.CardNumber</dd>
+            <dt class="col-sm-2">CreditLimit</dt>
+            <dd class="col-sm-10">@creditcard.CreditLimit</dd>
+            <dt class="col-sm-2">CurrentBalance</dt>
+            <dd class="col-sm-10">@creditcard.CurrentBalance</dd>
+            <dt class="col-sm-2">InterestRate</dt>
+            <dd class="col-sm-10">@creditcard.InterestRate</dd>
+            <dt class="col-sm-2">MinimumPayment</dt>
+            <dd class="col-sm-10">@creditcard.MinimumPayment</dd>
+            <dt class="col-sm-2">NextDueDate</dt>
+            <dd class="col-sm-10">@creditcard.NextDueDate</dd>
+        </dl>
+        <div>
+            <a href="@($"/creditcards/edit?id={creditcard.Id}")">Edit</a> |
+            <a href="@($"/creditcards")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private CreditCard? creditcard;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        creditcard = await context.CreditCard.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (creditcard is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

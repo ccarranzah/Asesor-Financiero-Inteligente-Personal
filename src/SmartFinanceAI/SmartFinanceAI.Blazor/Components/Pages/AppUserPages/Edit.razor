@@ -1,0 +1,115 @@
+@page "/me"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>My Profile</h2>
+<hr />
+@if (AppUser is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="AppUser" OnValidSubmit="UpdateAppUser" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert" />
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <InputText id="name" @bind-Value="AppUser.Name" class="form-control" />
+                    <ValidationMessage For="() => AppUser.Name" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age:</label>
+                    <InputNumber id="age" @bind-Value="AppUser.Age" class="form-control" />
+                    <ValidationMessage For="() => AppUser.Age" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="riskprofile" class="form-label">Risk Profile:</label>
+                    <InputSelect id="riskprofile" @bind-Value="AppUser.RiskProfile" class="form-control">
+                        @foreach (var risk in Enum.GetValues<RiskProfile>())
+                        {
+                            <option value="@risk">@risk</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => AppUser.RiskProfile" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+@code {
+    @* [SupplyParameterFromQuery] *@
+    private int Id { get; set; } = 1;
+
+    [SupplyParameterFromForm]
+    private AppUser? AppUser { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        AppUser ??= await context.AppUser.FirstOrDefaultAsync(m => m.Id == 1);
+
+        if (AppUser is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateAppUser()
+    {
+        if (AppUser is not null)
+        {
+            AppUser.Id = 1; // TODO: Replace with actual user ID from authentication context
+        }
+
+        using var context = DbFactory.CreateDbContext();
+
+        var existingAppUser = await context.AppUser.FindAsync(AppUser?.Id ?? 1);
+
+        if (existingAppUser is null)
+        {
+            // Redirect to "notfound" if the AppUser does not exist in the database
+            NavigationManager.NavigateTo("notfound");
+            return;
+        }
+
+        // Update the properties of the existing entity
+        context.Entry(existingAppUser).CurrentValues.SetValues(AppUser!);
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!AppUserExists(AppUser!.Id))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/me");
+    }
+
+    private bool AppUserExists(int id)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.AppUser.Any(e => e.Id == id);
+    }
+}

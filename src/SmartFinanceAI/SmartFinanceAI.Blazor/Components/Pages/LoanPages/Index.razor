@@ -1,0 +1,37 @@
+@page "/loans"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using SmartFinanceAI.Blazor.Models
+@using SmartFinanceAI.Blazor.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="loans/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.Loan">
+    <PropertyColumn Property="loan => loan.LoanAlias" />
+    <PropertyColumn Property="loan => loan.OutstandingBalance" />
+
+    <TemplateColumn Context="loan">
+        <a href="@($"loans/edit?id={loan.Id}")">Edit</a> |
+        <a href="@($"loans/details?id={loan.Id}")">Details</a> |
+        <a href="@($"loans/delete?id={loan.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private SmartFinanceAIAppContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

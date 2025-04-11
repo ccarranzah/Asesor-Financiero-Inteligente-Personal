@@ -1,0 +1,87 @@
+@page "/loans/delete"
+@using Microsoft.EntityFrameworkCore
+@using SmartFinanceAI.Blazor.Models
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>Loan</h2>
+    <hr />
+    @if (loan is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Loan Alias</dt>
+            <dd class="col-sm-10">@loan.LoanAlias</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Principal Amount</dt>
+            <dd class="col-sm-10">@loan.PrincipalAmount</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Interest Rate</dt>
+            <dd class="col-sm-10">@loan.InterestRate</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Term Months</dt>
+            <dd class="col-sm-10">@loan.TermMonths</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Outstanding Months</dt>
+            <dd class="col-sm-10">@loan.OutstandingMonths</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Monthly Payment</dt>
+            <dd class="col-sm-10">@loan.MonthlyPayment</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Outstanding Balance</dt>
+            <dd class="col-sm-10">@loan.OutstandingBalance</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Start Date</dt>
+            <dd class="col-sm-10">@loan.StartDate</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Due Day</dt>
+            <dd class="col-sm-10">@loan.DueDay</dd>
+        </dl>
+        <EditForm method="post" Model="loan" OnValidSubmit="DeleteLoan" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(loan is null)">Delete</button> |
+            <a href="/loans">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private Loan? loan;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        loan = await context.Loan.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (loan is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteLoan()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Loan.Remove(loan!);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/loans");
+    }
+}

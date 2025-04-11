@@ -1,0 +1,38 @@
+@page "/creditcards"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using SmartFinanceAI.Blazor.Models
+@using SmartFinanceAI.Blazor.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<SmartFinanceAI.Blazor.Data.SmartFinanceAIAppContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="creditcards/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.CreditCard">
+    <PropertyColumn Property="creditcard => creditcard.CardNumber" />
+    <PropertyColumn Property="creditcard => creditcard.CurrentBalance" />
+    <PropertyColumn Property="creditcard => creditcard.NextDueDate" />
+
+    <TemplateColumn Context="creditcard">
+        <a href="@($"creditcards/edit?id={creditcard.Id}")">Edit</a> |
+        <a href="@($"creditcards/details?id={creditcard.Id}")">Details</a> |
+        <a href="@($"creditcards/delete?id={creditcard.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private SmartFinanceAIAppContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}
