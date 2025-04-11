@@ -100,6 +100,23 @@ namespace SmartFinanceAI.Blazor.Migrations
                     b.ToTable("CreditCard");
                 });
 
+            modelBuilder.Entity("SmartFinanceAI.Blazor.Models.FinancialAdvisorRule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Definition")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FinancialAdvisorRule");
+                });
+
             modelBuilder.Entity("SmartFinanceAI.Blazor.Models.Loan", b =>
                 {
                     b.Property<int>("Id")

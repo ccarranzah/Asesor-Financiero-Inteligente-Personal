@@ -13,7 +13,7 @@ public class InvestmentRecommendationRule : Rule
 
         When()
             .Match(() => plan,
-                p => p.User.GetSuperaavitByPeriod(now.Year, now.Month) / p.User.GetTotalInflowByPeriod(now.Year, now.Month) >= 0.2m);
+                p => p.AppUser.GetSuperaavitByPeriod(now.Year, now.Month) / p.AppUser.GetTotalInflowByPeriod(now.Year, now.Month) >= 0.2m);
 
         Then()
             .Do(ctx => CheckInvestment(plan));
@@ -21,8 +21,8 @@ public class InvestmentRecommendationRule : Rule
 
     private void CheckInvestment(FinancialAdvisor plan)
     {
-        var riskProfile = plan.User.RiskProfile;
-        var investmentAmount = plan.User.GetSuperaavitByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) * 0.6m;
+        var riskProfile = plan.AppUser.RiskProfile;
+        var investmentAmount = plan.AppUser.GetSuperaavitByPeriod(DateTime.UtcNow.Year, DateTime.UtcNow.Month) * 0.6m;
 
         switch (riskProfile)
         {
@@ -40,7 +40,7 @@ public class InvestmentRecommendationRule : Rule
                 plan.Penalize(5);
                 break;
             case RiskProfile.Aggressive:
-                plan.AddAdvice($"Investment Opportunity - {plan.User.Name}, congratulations! You have a 20% surplus of your income." +
+                plan.AddAdvice($"Investment Opportunity - {plan.AppUser.Name}, congratulations! You have a 20% surplus of your income." +
                     $"\r\nSince your risk profile is {riskProfile}, we recommend exploring investments in high-volatility Mutual Funds or ETFs" +
                     $"\r\nThese options can offer higher returns, although with a higher level of risk.");
                 plan.Penalize(5);

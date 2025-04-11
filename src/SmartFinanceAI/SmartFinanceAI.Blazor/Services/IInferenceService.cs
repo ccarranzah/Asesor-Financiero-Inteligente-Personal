@@ -4,5 +4,6 @@ namespace SmartFinanceAI.Blazor.Services;
 
 public interface IInferenceService
 {
-    NRules.ISession CreateSession();
+    Task RefreshRulesAsync();
+    Task<NRules.ISession> CreateSessionAsync();
 }

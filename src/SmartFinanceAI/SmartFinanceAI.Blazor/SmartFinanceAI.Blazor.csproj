@@ -19,10 +19,17 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
     <PackageReference Include="NRules" Version="1.0.2" />
     <PackageReference Include="NRules.Fluent" Version="1.0.2" />
+    <PackageReference Include="NRules.Json" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\fact.json">
+    <None Update="Data\SeedData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\SeedRules\*.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

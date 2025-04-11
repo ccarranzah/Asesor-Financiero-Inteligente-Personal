@@ -32,7 +32,7 @@ Brindar asesoramiento financiero inteligente basado en la **situación económic
 ✅ Visualización de datos financieros 
 
 ## 📂 Instalación y Ejecución
-Si no tienes experiencia en programación, sigue estos pasos detallados para instalar y ejecutar el proyecto correctamente en tu computadora.
+Si no tienes experiencia en programación, sigue estos pasos detallados para instalar y ejecutar el proyecto correctamente en tu computadora. Puede saltar al paso 3 para correr utilizando un contenedor.
 
 ### 🖥️ Requisitos previos
 Antes de empezar, asegúrate de tener instalado en tu computadora:
@@ -49,8 +49,6 @@ Para verificar si están instalados:
   dotnet --version
   ```
   - Si ves un número de versión, significa que están instalados.
-  - Si da error, instala **Git** y **.NET SDK** desde los enlaces proporcionados arriba.
-
 ### 📥 Paso 1: Descargar el proyecto
 1. Abre la terminal o línea de comandos.
 2. Escribe el siguiente comando para descargar el código del repositorio:
@@ -59,21 +57,32 @@ Para verificar si están instalados:
    ```
 3. Ingresa a la carpeta del proyecto:
    ```bash
-   cd .\Asesor-Financiero-Inteligente-Personal\src\SmartFinanceAI\SmartFinanceAI.App
+   cd .\Asesor-Financiero-Inteligente-Personal\
    ```
 
-### ⚙️ Paso 2: Instalar las dependencias necesarias
-Una vez dentro de la carpeta del proyecto, instala los paquetes necesarios ejecutando:
+### ⚙️ Paso 2: Ejecutar el proyecto con Docker
+Si tienes Docker instalado, puedes ejecutar el proyecto sin necesidad de instalar .NET SDK. Simplemente usa el siguiente comando:
 ```bash
-   dotnet restore
+   docker-compose up
 ```
-Esto descargará todas las herramientas que necesita el proyecto para funcionar correctamente.
+Esto descargará las imágenes necesarias, construirá el contenedor y ejecutará el sistema automáticamente montando un Volumen para persistir la base de datos, y crear el port binding. Abrir el navegador en http://localhost:8080
 
-### ▶️ Paso 3: Ejecutar el proyecto
-Para iniciar el sistema, ejecuta:
-```bash
+### ▶️ Alternativa: Ejecutar el proyecto manualmente
+Si prefieres no usar Docker, asegúrate de tener .NET SDK instalado y sigue estos pasos:
+
+1. Ingresa a la carpeta de la aplicación:
+   ```bash
+   cd .\src\SmartFinanceAI\SmartFinanceAI.Blazor
+   ```
+2. Instala las dependencias necesarias ejecutando:
+   ```bash
+   dotnet restore
+   ```
+3. Inicia el sistema con:
+   ```bash
    dotnet run
-```
+   ```
+
 Después de unos segundos, el sistema estará funcionando y mostrará información en la consola.
 
 ### 🔄 Paso 4: Interactuar con el sistema
@@ -398,9 +407,7 @@ Cada tres meses, el sistema analiza los ingresos, gastos y ahorros del usuario p
 > "Carlos, en los últimos 3 meses no has logrado ahorrar y presentas más gastos que ingresos. Te sugerimos reducir gastos en entretenimiento y comida fuera de casa para mejorar tu estabilidad financiera. Tu calificación financiera es D. ¿Quieres que el sistema te ayude a ajustar tu presupuesto?"
 
 ## Reglas
-
 Las reglas se han definido temporalmente para su prueba de funcionamiento en código: [SmartFinanceAI.Rules/](https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal/tree/main/src/SmartFinanceAI/SmartFinanceAI.Rules)
 
 ## Base de hechos
-
 La base de hechos para las pruebas de inferencia se han definido para su prueba de funcionamiento en código: [SmartFinanceAI.App/](https://github.com/ccarranzah/Asesor-Financiero-Inteligente-Personal/blob/main/src/SmartFinanceAI/SmartFinanceAI.App/Data/fact.json)
