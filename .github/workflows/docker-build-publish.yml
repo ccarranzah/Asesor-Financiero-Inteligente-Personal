@@ -20,7 +20,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Paso 2: Configurar Docker Buildx para construir imágenes multiplataforma
+      # Paso 2: Configurar Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -31,15 +31,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Paso 4: Iniciar sesión en GitHub Container Registry
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      # Paso 5: Generar una etiqueta de versión dinámica
+      # Paso 4: Generar etiqueta de versión dinámica
       - name: Generate dynamic version tag
         id: versioning
         run: |
@@ -49,8 +41,8 @@ jobs:
           echo "Generated version: $version"
           echo "new_tag=$version" >> $GITHUB_OUTPUT
 
-      # Paso 6: Construir y publicar la imagen Docker
-      - name: Build and Push Docker image
+      # Paso 5: Construir y publicar imagen en Docker Hub
+      - name: Build and Push Docker image to Docker Hub
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -60,22 +52,20 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:latest
             ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
-            ghcr.io/${{ github.repository_owner }}/smart-finance-app:latest
-            ghcr.io/${{ github.repository_owner }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
 
-      # Paso 7: Configurar Git
+      # Paso 6: Configurar Git
       - name: Configure Git
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      # Paso 8: Crear rama de release
+      # Paso 7: Crear rama de release
       - name: Create release branch
         run: |
           git checkout -b release-${{ steps.versioning.outputs.new_tag }}
           git push origin release-${{ steps.versioning.outputs.new_tag }}
 
-      # Paso 9: Crear GitHub Release
+      # Paso 8: Crear GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -85,6 +75,5 @@ jobs:
             🚀 Auto-release generado el ${{ steps.versioning.outputs.new_tag }}
             Imagen publicada en:
             `docker.io/${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
-            `ghcr.io/${{ github.repository_owner }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
