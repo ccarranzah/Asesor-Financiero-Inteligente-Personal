@@ -1,4 +1,4 @@
-name: Auto Build & Release
+name: Auto Build & Release with Timestamped Version
 
 on:
   push:
@@ -14,76 +14,77 @@ jobs:
 
     permissions:
       contents: write
-      steps:
-        # Paso 1: Descargar el código fuente del repositorio
-        - name: Checkout code
-          uses: actions/checkout@v3
 
-        # Paso 2: Configurar Docker Buildx para construir imágenes multiplataforma
-        - name: Set up Docker Buildx
-          uses: docker/setup-buildx-action@v2
+    steps:
+      # Paso 1: Descargar el código fuente del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-        # Paso 3: Iniciar sesión en Docker Hub
-        - name: Login to Docker Hub
-          uses: docker/login-action@v2
-          with:
+      # Paso 2: Configurar Docker Buildx para construir imágenes multiplataforma
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      # Paso 3: Iniciar sesión en Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-        # Paso 4: Iniciar sesión en el Registro de Contenedores de GitHub (GHCR)
-        - name: Login to GitHub Container Registry
-          uses: docker/login-action@v2
-          with:
+      # Paso 4: Iniciar sesión en GitHub Container Registry
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-        # Paso 5: Generar una etiqueta de versión dinámica basada en la fecha y el commit SHA
-        - name: Generate dynamic version tag
-          id: versioning
-          run: |
+      # Paso 5: Generar una etiqueta de versión dinámica
+      - name: Generate dynamic version tag
+        id: versioning
+        run: |
           timestamp=$(date +'%Y%m%d.%H%M')
           sha_short=$(git rev-parse --short HEAD)
           version="v0.${timestamp}-${sha_short}"
           echo "Generated version: $version"
           echo "new_tag=$version" >> $GITHUB_OUTPUT
 
-        # Paso 6: Construir y publicar la imagen Docker en Docker Hub y GHCR
-        - name: Build and Push Docker image to Docker Hub and GitHub Container Registry
-          uses: docker/build-push-action@v5
-          with:
+      # Paso 6: Construir y publicar la imagen Docker
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v5
+        with:
           context: .
           push: true
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/smart-finance-app:cache
           cache-to: type=inline
           tags: |
-          ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:latest
-          ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
-          ghcr.io/${{ github.repository_owner }}/smart-finance-app:latest
-          ghcr.io/${{ github.repository_owner }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
+            ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:latest
+            ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
+            ghcr.io/${{ github.repository_owner }}/smart-finance-app:latest
+            ghcr.io/${{ github.repository_owner }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
 
-        # Paso 7: Configurar Git para realizar cambios en el repositorio
-        - name: Configure Git
-          run: |
+      # Paso 7: Configurar Git
+      - name: Configure Git
+        run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-        # Paso 8: Crear una rama de lanzamiento con la nueva etiqueta de versión
-        - name: Create release branch
-          run: |
+      # Paso 8: Crear rama de release
+      - name: Create release branch
+        run: |
           git checkout -b release-${{ steps.versioning.outputs.new_tag }}
           git push origin release-${{ steps.versioning.outputs.new_tag }}
 
-        # Paso 9: Crear un Release en GitHub con la nueva versión
-        - name: Create GitHub Release
-          uses: softprops/action-gh-release@v2
-          with:
+      # Paso 9: Crear GitHub Release
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
           tag_name: ${{ steps.versioning.outputs.new_tag }}
           name: Release ${{ steps.versioning.outputs.new_tag }}
           body: |
-          🚀 Auto-release generado el ${{ steps.versioning.outputs.new_tag }}
-          Imagen publicada en:  
-          `docker.io/${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
-          `ghcr.io/${{ github.repository_owner }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
-          env:
+            🚀 Auto-release generado el ${{ steps.versioning.outputs.new_tag }}
+            Imagen publicada en:
+            `docker.io/${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
+            `ghcr.io/${{ github.repository_owner }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
