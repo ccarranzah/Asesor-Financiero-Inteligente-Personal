@@ -1,79 +1,95 @@
-name: Auto Build & Release with Timestamped Version
+name: Release Docker Image and GitHub Release on Tag
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    tags:
+      - 'v*'  # Se ejecuta al hacer push de un tag como v1.2.3, v2.0.0-beta, etc.
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: write  # Necesario para crear el release en GitHub
 
     steps:
-      # Paso 1: Descargar el código fuente del repositorio
-      - name: Checkout code
+      # Paso 1: Clonar el repositorio con historial completo
+      - name: Checkout source code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      # Paso 2: Configurar Docker Buildx
+      # Paso 2: Validar que el tag pertenece a un commit de la rama 'main'
+      - name: Validate tag is on main
+        run: |
+          TAG_COMMIT=$(git rev-parse HEAD)
+          echo "Tag commit: $TAG_COMMIT"
+
+          git fetch origin main
+          MAIN_COMMITS=$(git rev-list origin/main)
+
+          if ! echo "$MAIN_COMMITS" | grep -q "$TAG_COMMIT"; then
+            echo "❌ El tag no está basado en un commit de la rama 'main'."
+            exit 1
+          fi
+
+          echo "✅ El tag pertenece a un commit de 'main'."
+
+      # Paso 3: Configurar Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      # Paso 3: Iniciar sesión en Docker Hub
-      - name: Login to Docker Hub
+      # Paso 4: Iniciar sesión en Docker Hub
+      - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Paso 4: Generar etiqueta de versión dinámica
-      - name: Generate dynamic version tag
-        id: versioning
+      # Paso 5: Extraer versión desde el nombre del tag
+      - name: Extract version from tag
+        id: get_version
         run: |
-          timestamp=$(date +'%Y%m%d.%H%M')
-          sha_short=$(git rev-parse --short HEAD)
-          version="v0.${timestamp}-${sha_short}"
-          echo "Generated version: $version"
-          echo "new_tag=$version" >> $GITHUB_OUTPUT
+          version="${GITHUB_REF#refs/tags/}"
+          echo "Versión detectada: $version"
+          echo "version=$version" >> $GITHUB_OUTPUT
 
-      # Paso 5: Construir y publicar imagen en Docker Hub
-      - name: Build and Push Docker image to Docker Hub
+      # Paso 6: Validar que el nombre del tag cumpla con el formato SemVer (incluyendo pre-releases)
+      - name: Validate tag format (SemVer)
+        run: |
+          version="${{ steps.get_version.outputs.version }}"
+          echo "Validating tag format: $version"
+
+          semver_regex="^v([0-9]+)\.([0-9]+)\.([0-9]+)(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$"
+
+          if [[ ! "$version" =~ $semver_regex ]]; then
+            echo "❌ El tag '$version' no cumple con el formato Semantic Versioning esperado."
+            echo "Formato válido: vMAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]"
+            exit 1
+          fi
+
+          echo "✅ Formato de tag válido."
+
+      # Paso 7: Construir y subir imagen Docker con la versión y con 'latest'
+      - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/smart-finance-app:cache
-          cache-to: type=inline
           tags: |
+            ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.get_version.outputs.version }}
             ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:latest
-            ${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}
 
-      # Paso 6: Configurar Git
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-      # Paso 7: Crear rama de release
-      - name: Create release branch
-        run: |
-          git checkout -b release-${{ steps.versioning.outputs.new_tag }}
-          git push origin release-${{ steps.versioning.outputs.new_tag }}
-
-      # Paso 8: Crear GitHub Release
-      - name: Create GitHub Release
+      # Paso 8: Crear un release en GitHub
+      - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.versioning.outputs.new_tag }}
-          name: Release ${{ steps.versioning.outputs.new_tag }}
+          tag_name: ${{ steps.get_version.outputs.version }}
+          name: Release ${{ steps.get_version.outputs.version }}
           body: |
-            🚀 Auto-release generado el ${{ steps.versioning.outputs.new_tag }}
-            Imagen publicada en:
-            `docker.io/${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.versioning.outputs.new_tag }}`
+            🚀 Publicación automática para la versión `${{ steps.get_version.outputs.version }}`
+            Imagen Docker disponible en:
+            - `docker.io/${{ secrets.DOCKER_USERNAME }}/smart-finance-app:${{ steps.get_version.outputs.version }}`
+            - `docker.io/${{ secrets.DOCKER_USERNAME }}/smart-finance-app:latest`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
