@@ -97,14 +97,16 @@
             FinancialAdvisor = new FinancialAdvisor(user);
         }
 
+        var logger = new PerformanceLogger();
+        var sessionId = Guid.NewGuid().ToString();
         var session = await InferenceService.CreateSessionAsync();
 
         //Setup an event handler that prints the name of the fired rule
         session.Events.RuleFiredEvent += (_, args) 
             => FinancialAdvisor!.RulesApplied.Add(args.Rule.Name);
-        
+
         session.Insert(FinancialAdvisor!);
 
-        session.Fire();
+        logger.LogInference(session, sessionId);
     }
 }
