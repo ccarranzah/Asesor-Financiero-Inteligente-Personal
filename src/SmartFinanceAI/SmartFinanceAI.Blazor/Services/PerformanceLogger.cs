@@ -40,7 +40,7 @@ public class PerformanceLogger
         }
 
         // Build the full file path
-        _logFilePath = $"{envPath}inference_metrics.csv";
+        _logFilePath = $"{envPath}metrics.csv";
 
         // Create the file if it does not exist
         if (!File.Exists(_logFilePath))
@@ -49,23 +49,28 @@ public class PerformanceLogger
         }
     }
 
-    public InferenceMetrics Measure(NRules.ISession session, string sessionId)
+    public InferenceMetrics Measure(Action inferenceAction)
     {
-        const double BytesToMB = 1024.0 * 1024.0;
-        var stopwatch = Stopwatch.StartNew();
-        session.Fire();
-        stopwatch.Stop();
+        Process proc = Process.GetCurrentProcess();
+        var cpuStart = proc.TotalProcessorTime;
+        var sw = Stopwatch.StartNew();
 
-        var process = Process.GetCurrentProcess();
+        inferenceAction.Invoke();
+
+        sw.Stop();
+        proc.Refresh();
+        var cpuEnd = proc.TotalProcessorTime;
+
+        var cpuTimeMs = (cpuEnd - cpuStart).TotalMilliseconds;
 
         var metrics = new InferenceMetrics
         {
-            SessionId = sessionId,
+            SessionId = Guid.NewGuid().ToString(),
             Timestamp = DateTime.Now,
-            InferenceTimeMs = stopwatch.ElapsedMilliseconds,
-            RamMB = Math.Round(process.WorkingSet64 / BytesToMB, 2),
-            CpuTimeMs = process.TotalProcessorTime.TotalMilliseconds,
-            EstimatedEnergyJ = _cpuPowerWatts * stopwatch.Elapsed.TotalSeconds
+            InferenceTimeMs = sw.ElapsedMilliseconds,
+            RamMB = proc.PrivateMemorySize64 / 1024.0 / 1024.0,
+            CpuTimeMs = cpuTimeMs,
+            EstimatedEnergyJ = _cpuPowerWatts * (cpuTimeMs / 1000.0)
         };
 
         return metrics;
@@ -78,9 +83,9 @@ public class PerformanceLogger
         Console.WriteLine(metrics.ToString());
     }
 
-    public void LogInference(NRules.ISession session, string sessionId)
+    public void LogMetrics(Action inferenceAction)
     {
-        var metrics = Measure(session, sessionId);
+        var metrics = Measure(inferenceAction);
         LogMetrics(metrics);
     }
 }

@@ -107,6 +107,8 @@
 
         session.Insert(FinancialAdvisor!);
 
-        logger.LogInference(session, sessionId);
+        logger.LogMetrics(() => {
+            session.Fire();
+        });
     }
 }

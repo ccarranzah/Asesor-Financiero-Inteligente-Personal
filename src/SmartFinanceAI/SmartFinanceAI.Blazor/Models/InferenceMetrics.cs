@@ -11,11 +11,11 @@ public class InferenceMetrics
 
     public override string ToString()
     {
-        return $"{SessionId},{Timestamp},{InferenceTimeMs},{RamMB:F2},{CpuTimeMs:F2},{EstimatedEnergyJ:F2}";
+        return $"{SessionId};{Timestamp:s};{InferenceTimeMs};{RamMB:F2};{CpuTimeMs:F2};{EstimatedEnergyJ:F2}";
     }
 
     public static string CsvHeader()
     {
-        return "SessionId,Timestamp,InferenceTimeMs,RAM_MB,CPUTimeMs,EstimatedEnergy_J";
+        return "SessionId;Timestamp;InferenceTimeMs;RAM_MB;CPUTimeMs;EstimatedEnergy_J";
     }
 }
