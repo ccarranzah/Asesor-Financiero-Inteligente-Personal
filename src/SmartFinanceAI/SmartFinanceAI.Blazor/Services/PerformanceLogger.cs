@@ -60,16 +60,18 @@ public class PerformanceLogger
         sw.Stop();
         proc.Refresh();
         var cpuEnd = proc.TotalProcessorTime;
-
-        var cpuTimeMs = (cpuEnd - cpuStart).TotalMilliseconds;
+        double cpuTimeMs = (cpuEnd - cpuStart).TotalMilliseconds;
+        double elapsedMs = sw.Elapsed.TotalMilliseconds;
+        double cpuUsagePercent = (cpuTimeMs / (Environment.ProcessorCount * elapsedMs)) * 100;
 
         var metrics = new InferenceMetrics
         {
             SessionId = Guid.NewGuid().ToString(),
             Timestamp = DateTime.Now,
-            InferenceTimeMs = sw.ElapsedMilliseconds,
+            InferenceTimeMs = elapsedMs,
             RamMB = proc.PrivateMemorySize64 / 1024.0 / 1024.0,
             CpuTimeMs = cpuTimeMs,
+            CpuUsagePercent = cpuUsagePercent,
             EstimatedEnergyJ = _cpuPowerWatts * (cpuTimeMs / 1000.0)
         };
 
